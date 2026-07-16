@@ -45,8 +45,8 @@ export default function LaFlottePage() {
           {SPECS.map(({ icon: Icon, label, value }) => (
             <StaggerItem key={label}>
               <div className="border-t border-brass/40 pt-5">
-                <Icon className="text-brass" size={24} strokeWidth={1.5} />
-                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-marine/50">
+                <Icon className="text-brass-400" size={24} strokeWidth={1.5} />
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
                   {label}
                 </p>
                 <p className="mt-1 font-serif text-xl text-marine">{value}</p>
@@ -69,7 +69,7 @@ export default function LaFlottePage() {
               />
             </Reveal>
             <Reveal>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass-400">
                 Le salon
               </p>
               <h2 className="mt-5 font-serif text-3xl leading-tight text-marine md:text-4xl">
@@ -115,7 +115,7 @@ export default function LaFlottePage() {
 
       <section className="bg-sable py-24 md:py-32">
         <Reveal className="container">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass-400">
             Équipements
           </p>
           <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">

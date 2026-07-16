@@ -12,6 +12,16 @@ body {
   background: var(--background);
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -46,7 +46,7 @@ export default function NuitsInsolitesPage() {
         <section className="bg-sable py-24 md:py-32">
           <div className="container">
             <Reveal>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass-400">
                 Déroulé de la soirée
               </p>
               <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">
@@ -58,8 +58,8 @@ export default function NuitsInsolitesPage() {
               {TIMELINE.map(({ icon: Icon, time, text }) => (
                 <StaggerItem key={time}>
                   <div className="border-t border-brass/40 pt-6">
-                    <Icon className="text-brass" size={26} strokeWidth={1.5} />
-                    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-marine/50">
+                    <Icon className="text-brass-400" size={26} strokeWidth={1.5} />
+                    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
                       {time}
                     </p>
                     <p className="mt-3 text-sm leading-relaxed text-marine/75">{text}</p>

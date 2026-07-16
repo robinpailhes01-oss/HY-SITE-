@@ -36,7 +36,7 @@ export function ContactForm() {
           Votre messagerie s&apos;est ouverte avec votre demande pré-remplie
           — il ne reste plus qu&apos;à l&apos;envoyer. Vous pouvez aussi nous
           écrire directement à{" "}
-          <a href={`mailto:${CONTACT.email}`} className="text-brass-300 underline">
+          <a href={`mailto:${CONTACT.email}`} className="text-brass-400 underline">
             {CONTACT.email}
           </a>
           .
@@ -49,7 +49,7 @@ export function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/60">
+          <label htmlFor="name" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
             Nom
           </label>
           <input
@@ -57,12 +57,12 @@ export function ContactForm() {
             name="name"
             type="text"
             required
-            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine placeholder:text-marine/40 focus:border-brass focus:outline-none"
+            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine placeholder:text-marine/65 transition-colors focus:border-brass focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400/40"
             placeholder="Votre nom"
           />
         </div>
         <div>
-          <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/60">
+          <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
             Téléphone
           </label>
           <input
@@ -70,7 +70,7 @@ export function ContactForm() {
             name="phone"
             type="tel"
             required
-            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine placeholder:text-marine/40 focus:border-brass focus:outline-none"
+            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine placeholder:text-marine/65 transition-colors focus:border-brass focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400/40"
             placeholder="06 00 00 00 00"
           />
         </div>
@@ -78,7 +78,7 @@ export function ContactForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="occasion" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/60">
+          <label htmlFor="occasion" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
             Occasion
           </label>
           <select
@@ -86,7 +86,7 @@ export function ContactForm() {
             name="occasion"
             required
             defaultValue=""
-            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine focus:border-brass focus:outline-none"
+            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine transition-colors focus:border-brass focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400/40"
           >
             <option value="" disabled>
               Choisissez une occasion
@@ -99,20 +99,21 @@ export function ContactForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="date" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/60">
-            Date souhaitée
+          <label htmlFor="date" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
+            Date souhaitée{" "}
+            <span className="font-normal normal-case tracking-normal text-marine/65">(optionnel)</span>
           </label>
           <input
             id="date"
             name="date"
             type="date"
-            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine focus:border-brass focus:outline-none"
+            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine transition-colors focus:border-brass focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400/40"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="message" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/60">
+        <label htmlFor="message" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
           Message
         </label>
         <textarea

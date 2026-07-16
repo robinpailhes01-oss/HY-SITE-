@@ -43,7 +43,8 @@ export function SiteHeader() {
             transparent ? "text-sable" : "text-marine"
           )}
         >
-          Harmonie <span className="text-brass">Yacht</span>
+          Harmonie{" "}
+          <span className={transparent ? "text-brass" : "text-brass-400"}>Yacht</span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
@@ -53,8 +54,8 @@ export function SiteHeader() {
               href={link.href}
               className={cn(
                 "text-sm font-medium tracking-wide transition-colors duration-300",
-                transparent ? "text-sable/90 hover:text-brass" : "text-marine/80 hover:text-brass",
-                pathname === link.href && (transparent ? "text-brass" : "text-brass")
+                transparent ? "text-sable/90 hover:text-brass" : "text-marine/80 hover:text-brass-400",
+                pathname === link.href && (transparent ? "text-brass" : "text-brass-400")
               )}
             >
               {link.label}
@@ -74,11 +75,11 @@ export function SiteHeader() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((v) => !v)}
           className={cn(
-            "lg:hidden inline-flex items-center justify-center p-2 -mr-2 transition-colors duration-300",
+            "lg:hidden -mr-2.5 inline-flex h-11 w-11 items-center justify-center transition-colors duration-300",
             transparent ? "text-sable" : "text-marine"
           )}
         >
-          {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -96,7 +97,7 @@ export function SiteHeader() {
               href={link.href}
               className={cn(
                 "py-3 text-base font-medium border-b border-marine/10 text-marine/90",
-                pathname === link.href && "text-brass"
+                pathname === link.href && "text-brass-400"
               )}
             >
               {link.label}

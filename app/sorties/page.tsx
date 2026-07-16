@@ -70,7 +70,7 @@ export default function SortiesPage() {
         <section className="bg-sable py-24 md:py-32">
           <div className="container">
             <Reveal>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass-400">
                 Pour chaque occasion
               </p>
               <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">
@@ -82,7 +82,7 @@ export default function SortiesPage() {
               {OCCASIONS.map(({ id, icon: Icon, title, description }) => (
                 <StaggerItem key={id} id={id} className="scroll-mt-28">
                   <div className="h-full border border-marine/10 bg-sable-50 p-8">
-                    <Icon className="text-brass" size={28} strokeWidth={1.5} />
+                    <Icon className="text-brass-400" size={28} strokeWidth={1.5} />
                     <h3 className="mt-6 font-serif text-xl text-marine">{title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-marine/70">
                       {description}

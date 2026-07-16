@@ -100,17 +100,22 @@ export default function TarifsPage() {
                   <div>
                     <p
                       className={`text-xs font-semibold uppercase tracking-[0.2em] ${
-                        f.featured ? "text-brass" : "text-marine/50"
+                        f.featured ? "text-brass" : "text-marine/65"
                       }`}
                     >
                       {f.duration}
                     </p>
                     <h2 className="mt-3 font-serif text-2xl">{f.name}</h2>
-                    <p className="mt-4 font-serif text-xl text-brass">{f.price}</p>
+                    <p className={`mt-4 font-serif text-xl ${f.featured ? "text-brass" : "text-brass-400"}`}>
+                      {f.price}
+                    </p>
                     <ul className="mt-6 space-y-3 text-sm leading-relaxed">
                       {f.features.map((feat) => (
                         <li key={feat} className="flex items-start gap-2">
-                          <Check size={16} className="mt-0.5 shrink-0 text-brass" />
+                          <Check
+                            size={16}
+                            className={`mt-0.5 shrink-0 ${f.featured ? "text-brass" : "text-brass-400"}`}
+                          />
                           <span className={f.featured ? "text-sable/85" : "text-marine/70"}>
                             {feat}
                           </span>
@@ -130,7 +135,7 @@ export default function TarifsPage() {
             ))}
           </StaggerGroup>
 
-          <p className="mt-8 text-xs text-marine/50">
+          <p className="mt-8 text-xs text-marine/65">
             Tarifs indicatifs, susceptibles d&apos;évoluer selon la saison. EVJF,
             anniversaires de groupe et événements d&apos;entreprise font
             l&apos;objet d&apos;un devis personnalisé.

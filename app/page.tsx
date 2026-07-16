@@ -105,7 +105,7 @@ export default function HomePage() {
                 <StaggerItem key={title}>
                   <div className="group flex h-full flex-col justify-between border border-marine/10 bg-sable-50 p-8 transition-colors duration-300 hover:border-brass/50">
                     <div>
-                      <Icon className="text-brass" size={28} strokeWidth={1.5} />
+                      <Icon className="text-brass-400" size={28} strokeWidth={1.5} />
                       <h2 className="mt-6 font-serif text-xl text-marine">{title}</h2>
                       <p className="mt-3 text-sm leading-relaxed text-marine/70">
                         {description}
@@ -113,7 +113,7 @@ export default function HomePage() {
                     </div>
                     <Link
                       href={href}
-                      className="mt-8 inline-flex items-center text-xs font-semibold uppercase tracking-[0.2em] text-brass-300 transition-colors group-hover:text-terracotta-200"
+                      className="mt-8 inline-flex items-center text-xs font-semibold uppercase tracking-[0.2em] text-brass-400 transition-colors group-hover:text-terracotta-300"
                     >
                       {cta} →
                     </Link>
@@ -168,7 +168,7 @@ export default function HomePage() {
                 />
               </Reveal>
               <Reveal>
-                <Quote className="text-brass" size={32} strokeWidth={1.5} />
+                <Quote className="text-brass-400" size={32} strokeWidth={1.5} />
                 <p className="mt-6 font-serif text-2xl italic leading-snug text-marine md:text-3xl">
                   Carnon, porte d&apos;entrée sur la Méditerranée — à dix
                   minutes de Montpellier, à une éternité du quotidien.

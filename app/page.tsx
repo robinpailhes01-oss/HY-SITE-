@@ -1,101 +1,193 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Anchor, Building2, Moon, Quote } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { WakeLine } from "@/components/wake-line";
 
-export default function Home() {
+const EXPERIENCES = [
+  {
+    icon: Anchor,
+    title: "Sorties en mer",
+    description:
+      "Après-midi ou journée au large de Carnon : EVJF, anniversaires, sorties d'entreprise. Bain, farniente et coucher de soleil à bord.",
+    href: "/sorties",
+    cta: "Découvrir les sorties",
+  },
+  {
+    icon: Moon,
+    title: "Nuits insolites",
+    description:
+      "Une nuit à deux, ancrés face à l'horizon. Le silence de la mer, le ciel étoilé, et le luxe discret d'un yacht rien que pour vous.",
+    href: "/nuits-insolites",
+    cta: "Découvrir la nuit insolite",
+  },
+  {
+    icon: Building2,
+    title: "Sur-mesure entreprise",
+    description:
+      "Séminaires, incentives et réceptions privées en mer. Une expérience mémorable pour fédérer vos équipes ou recevoir vos clients.",
+    href: "/sorties#entreprise",
+    cta: "Organiser un événement",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <main>
+      <section className="relative flex min-h-[100svh] items-end overflow-hidden">
         <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src="/images/hero-sillage-coucher-soleil.jpg"
+          alt="Sillage doré au coucher du soleil vu depuis le pont arrière d'un yacht au large de Carnon"
+          fill
           priority
+          sizes="100vw"
+          className="object-cover"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <div className="absolute inset-0 bg-gradient-to-t from-marine-400/90 via-marine-400/30 to-marine-400/10" />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="container relative z-10 pb-20 pt-40 md:pb-28">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.35em] text-brass">
+            Carnon · Montpellier
+          </p>
+          <h1 className="mt-5 max-w-2xl font-serif text-4xl italic leading-[1.1] text-sable sm:text-5xl md:text-6xl">
+            Le large, en toute intimité.
+          </h1>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-sable/85 md:text-lg">
+            Harmonie Yacht imagine des sorties en mer et des nuits insolites à
+            bord, entre Carnon et l&apos;horizon — pour vivre la Méditerranée
+            autrement.
+          </p>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <Button href="/sorties" variant="primary">
+              Réserver une sortie
+            </Button>
+            <Button href="/nuits-insolites" variant="outline" className="text-sable border-sable/60 hover:bg-sable/10">
+              Une nuit insolite
+            </Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section className="relative bg-sable py-24 md:py-32">
+        <WakeLine className="absolute left-6 top-0 hidden h-full w-1 text-brass/40 md:left-12 md:block" />
+        <div className="container">
+          <div className="grid gap-16 md:grid-cols-[0.9fr_1.1fr] md:items-center">
+            <p className="font-serif text-2xl italic leading-snug text-marine md:text-3xl">
+              &laquo;&nbsp;Créateurs de moments authentiques&nbsp;&raquo; n&apos;est
+              pas qu&apos;une signature : c&apos;est la promesse d&apos;une mer
+              vécue à hauteur d&apos;humain, loin de l&apos;agitation du port.
+            </p>
+            <p className="text-base leading-relaxed text-marine/75 md:text-lg">
+              Basé à Carnon, à quelques minutes de Montpellier, Harmonie Yacht
+              met son bateau et son capitaine à votre service pour des
+              moments taillés sur mesure — entre amis pour un EVJF, en
+              famille pour un anniversaire, entre collègues pour un
+              séminaire, ou à deux pour une nuit que vous n&apos;oublierez
+              pas.
+            </p>
+          </div>
+
+          <div className="mt-20 grid gap-6 md:mt-28 md:grid-cols-3">
+            {EXPERIENCES.map(({ icon: Icon, title, description, href, cta }) => (
+              <div
+                key={title}
+                className="group flex flex-col justify-between border border-marine/10 bg-sable-50 p-8 transition-colors duration-300 hover:border-brass/50"
+              >
+                <div>
+                  <Icon className="text-brass" size={28} strokeWidth={1.5} />
+                  <h2 className="mt-6 font-serif text-xl text-marine">{title}</h2>
+                  <p className="mt-3 text-sm leading-relaxed text-marine/70">
+                    {description}
+                  </p>
+                </div>
+                <Link
+                  href={href}
+                  className="mt-8 inline-flex items-center text-xs font-semibold uppercase tracking-[0.2em] text-brass-300 transition-colors group-hover:text-terracotta-200"
+                >
+                  {cta} →
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-marine py-24 text-sable md:py-32">
+        <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
+          <div className="relative aspect-[4/5] w-full overflow-hidden md:order-2">
+            <Image
+              src="/images/salon-interieur.jpg"
+              alt="Salon intérieur du yacht Harmonie Yacht, boiseries acajou et banquette en cuir crème"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="md:order-1">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
+              À bord
+            </p>
+            <h2 className="mt-5 font-serif text-3xl leading-tight text-sable md:text-4xl">
+              Un intérieur chaleureux, pensé pour recevoir.
+            </h2>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-sable/75">
+              Boiseries acajou, banquettes en cuir, table dressée pour vos
+              repas au mouillage : le yacht Harmonie conjugue le confort
+              d&apos;une maison et la liberté du large. Jusqu&apos;à 12
+              personnes le jour, ou en tête-à-tête pour la nuit.
+            </p>
+            <Button href="/la-flotte" variant="outline" className="mt-8 text-sable border-sable/40 hover:bg-sable/10">
+              Découvrir la flotte
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-sable py-24 md:py-32">
+        <div className="container">
+          <div className="grid gap-16 md:grid-cols-[1fr_1.2fr] md:items-center">
+            <div className="relative aspect-[4/5] w-full overflow-hidden">
+              <Image
+                src="/images/sortie-groupe-jour.jpg"
+                alt="Groupe d'amis au ponton gonflable à l'arrière du yacht, journée ensoleillée au large de Carnon"
+                fill
+                sizes="(min-width: 768px) 45vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <Quote className="text-brass" size={32} strokeWidth={1.5} />
+              <p className="mt-6 font-serif text-2xl italic leading-snug text-marine md:text-3xl">
+                Carnon, porte d&apos;entrée sur la Méditerranée — à dix
+                minutes de Montpellier, à une éternité du quotidien.
+              </p>
+              <p className="mt-6 max-w-md text-base leading-relaxed text-marine/70">
+                Embarquement au port de Carnon, cadre à quelques encablures de
+                la plage : le rendez-vous idéal pour commencer une sortie
+                entre amis ou une escapade à deux.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-marine py-24 text-center text-sable md:py-32">
+        <div className="container relative z-10 flex flex-col items-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
+            Réservation
+          </p>
+          <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight md:text-4xl">
+            Réservez votre moment sur l&apos;eau.
+          </h2>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-sable/75">
+            Places limitées chaque semaine — écrivez-nous pour vérifier les
+            disponibilités à Carnon.
+          </p>
+          <Button href="/contact" variant="primary" className="mt-10">
+            Nous contacter
+          </Button>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -1,0 +1,72 @@
+import Link from "next/link";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { InstagramIcon } from "@/components/icons/instagram";
+import { CONTACT, NAV_LINKS } from "@/lib/nav";
+
+export function SiteFooter() {
+  return (
+    <footer className="relative bg-marine text-sable">
+      <div className="container py-16 md:py-20">
+        <div className="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr]">
+          <div>
+            <p className="font-serif text-2xl tracking-[0.15em] uppercase">
+              Harmonie <span className="text-brass">Yacht</span>
+            </p>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-sable/70">
+              Créateurs de moments authentiques. Sorties en mer et nuits
+              insolites à bord, au départ de Carnon.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brass">
+              Navigation
+            </p>
+            <ul className="mt-5 space-y-3 text-sm text-sable/80">
+              {NAV_LINKS.filter((l) => l.href !== "/").map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="transition-colors hover:text-brass">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brass">
+              Contact
+            </p>
+            <ul className="mt-5 space-y-3 text-sm text-sable/80">
+              <li className="flex items-start gap-2">
+                <MapPin size={16} className="mt-0.5 shrink-0 text-brass" />
+                <span>{CONTACT.location}</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone size={16} className="shrink-0 text-brass" />
+                <a href={`tel:${CONTACT.phoneHref}`} className="transition-colors hover:text-brass">
+                  {CONTACT.phone}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail size={16} className="shrink-0 text-brass" />
+                <a href={`mailto:${CONTACT.email}`} className="transition-colors hover:text-brass">
+                  {CONTACT.email}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <InstagramIcon size={16} className="shrink-0 text-brass" />
+                <span>{CONTACT.instagram}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-16 flex flex-col-reverse items-center justify-between gap-4 border-t border-sable/10 pt-8 text-xs text-sable/50 md:flex-row">
+          <p>&copy; {new Date().getFullYear()} Harmonie Yacht. Tous droits réservés.</p>
+          <p>Carnon-Plage · Montpellier</p>
+        </div>
+      </div>
+    </footer>
+  );
+}

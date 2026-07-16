@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Check } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/motion/reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 
 export const metadata: Metadata = {
   title: "Tarifs",
@@ -85,47 +87,48 @@ export default function TarifsPage() {
 
       <section className="bg-sable py-24 md:py-32">
         <div className="container">
-          <div className="grid gap-6 md:grid-cols-4">
+          <StaggerGroup className="grid gap-6 md:grid-cols-4">
             {FORMULES.map((f) => (
-              <div
-                key={f.name}
-                className={`flex flex-col justify-between border p-8 ${
-                  f.featured
-                    ? "border-brass bg-marine text-sable"
-                    : "border-marine/10 bg-sable-50 text-marine"
-                }`}
-              >
-                <div>
-                  <p
-                    className={`text-xs font-semibold uppercase tracking-[0.2em] ${
-                      f.featured ? "text-brass" : "text-marine/50"
-                    }`}
-                  >
-                    {f.duration}
-                  </p>
-                  <h2 className="mt-3 font-serif text-2xl">{f.name}</h2>
-                  <p className="mt-4 font-serif text-xl text-brass">{f.price}</p>
-                  <ul className="mt-6 space-y-3 text-sm leading-relaxed">
-                    {f.features.map((feat) => (
-                      <li key={feat} className="flex items-start gap-2">
-                        <Check size={16} className="mt-0.5 shrink-0 text-brass" />
-                        <span className={f.featured ? "text-sable/85" : "text-marine/70"}>
-                          {feat}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <Button
-                  href="/contact"
-                  variant={f.featured ? "primary" : "outline"}
-                  className={`mt-8 ${!f.featured ? "border-marine/30 hover:bg-marine/5" : ""}`}
+              <StaggerItem key={f.name}>
+                <div
+                  className={`flex h-full flex-col justify-between border p-8 transition-transform duration-300 hover:-translate-y-1 ${
+                    f.featured
+                      ? "border-brass bg-marine text-sable"
+                      : "border-marine/10 bg-sable-50 text-marine"
+                  }`}
                 >
-                  Réserver
-                </Button>
-              </div>
+                  <div>
+                    <p
+                      className={`text-xs font-semibold uppercase tracking-[0.2em] ${
+                        f.featured ? "text-brass" : "text-marine/50"
+                      }`}
+                    >
+                      {f.duration}
+                    </p>
+                    <h2 className="mt-3 font-serif text-2xl">{f.name}</h2>
+                    <p className="mt-4 font-serif text-xl text-brass">{f.price}</p>
+                    <ul className="mt-6 space-y-3 text-sm leading-relaxed">
+                      {f.features.map((feat) => (
+                        <li key={feat} className="flex items-start gap-2">
+                          <Check size={16} className="mt-0.5 shrink-0 text-brass" />
+                          <span className={f.featured ? "text-sable/85" : "text-marine/70"}>
+                            {feat}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Button
+                    href="/contact"
+                    variant={f.featured ? "primary" : "outline"}
+                    className={`mt-8 ${!f.featured ? "border-marine/30 hover:bg-marine/5" : ""}`}
+                  >
+                    Réserver
+                  </Button>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
 
           <p className="mt-8 text-xs text-marine/50">
             Tarifs indicatifs, susceptibles d&apos;évoluer selon la saison. EVJF,
@@ -137,32 +140,36 @@ export default function TarifsPage() {
 
       <section className="bg-marine py-24 text-sable md:py-32">
         <div className="container max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
-            Questions fréquentes
-          </p>
-          <h2 className="mt-5 font-serif text-3xl leading-tight md:text-4xl">
-            Tout ce qu&apos;il faut savoir avant de réserver.
-          </h2>
-          <div className="mt-12 space-y-8">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
+              Questions fréquentes
+            </p>
+            <h2 className="mt-5 font-serif text-3xl leading-tight md:text-4xl">
+              Tout ce qu&apos;il faut savoir avant de réserver.
+            </h2>
+          </Reveal>
+          <StaggerGroup className="mt-12 space-y-8">
             {FAQ.map(({ q, a }) => (
-              <div key={q} className="border-b border-sable/15 pb-8">
-                <p className="font-serif text-lg">{q}</p>
-                <p className="mt-3 text-sm leading-relaxed text-sable/70">{a}</p>
-              </div>
+              <StaggerItem key={q}>
+                <div className="border-b border-sable/15 pb-8">
+                  <p className="font-serif text-lg">{q}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-sable/70">{a}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
       <section className="bg-sable py-24 text-center md:py-32">
-        <div className="container flex flex-col items-center">
+        <Reveal className="container flex flex-col items-center">
           <h2 className="max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">
             Une question sur les tarifs ?
           </h2>
           <Button href="/contact" variant="primary" className="mt-10">
             Demander un devis
           </Button>
-        </div>
+        </Reveal>
       </section>
     </main>
   );

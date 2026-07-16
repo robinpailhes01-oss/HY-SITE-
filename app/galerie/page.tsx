@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/motion/reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 
 export const metadata: Metadata = {
   title: "Galerie",
@@ -50,12 +52,9 @@ export default function GaleriePage() {
 
       <section className="bg-sable py-24 md:py-32">
         <div className="container">
-          <div className="grid auto-rows-[16rem] grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:auto-rows-[14rem]">
+          <StaggerGroup className="grid auto-rows-[16rem] grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:auto-rows-[14rem]">
             {PHOTOS.map((photo) => (
-              <div
-                key={photo.src}
-                className={`relative overflow-hidden ${photo.span}`}
-              >
+              <StaggerItem key={photo.src} className={`relative overflow-hidden ${photo.span}`}>
                 <Image
                   src={photo.src}
                   alt={photo.alt}
@@ -63,11 +62,11 @@ export default function GaleriePage() {
                   sizes="(min-width: 768px) 33vw, 100vw"
                   className="object-cover transition-transform duration-700 hover:scale-105"
                 />
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
 
-          <div className="mt-16 flex flex-col items-center text-center">
+          <Reveal className="mt-16 flex flex-col items-center text-center">
             <p className="max-w-md text-base leading-relaxed text-marine/70">
               Envie de vivre votre propre moment à bord ? Réservez votre
               sortie ou votre nuit insolite dès aujourd&apos;hui.
@@ -75,7 +74,7 @@ export default function GaleriePage() {
             <Button href="/contact" variant="primary" className="mt-8">
               Réserver
             </Button>
-          </div>
+          </Reveal>
         </div>
       </section>
     </main>

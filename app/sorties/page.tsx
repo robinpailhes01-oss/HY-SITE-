@@ -3,6 +3,9 @@ import Image from "next/image";
 import { Briefcase, Cake, PartyPopper } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
+import { WakeScrollSection } from "@/components/wake-scroll-section";
+import { Reveal } from "@/components/motion/reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 
 export const metadata: Metadata = {
   title: "Sorties en mer — EVJF, anniversaires, entreprise",
@@ -63,75 +66,77 @@ export default function SortiesPage() {
         imageAlt="Groupe d'amis profitant du ponton gonflable à l'arrière du yacht par une journée ensoleillée"
       />
 
-      <section className="bg-sable py-24 md:py-32">
-        <div className="container">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
-            Pour chaque occasion
-          </p>
-          <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">
-            Trois façons de vivre la mer autrement.
-          </h2>
+      <WakeScrollSection>
+        <section className="bg-sable py-24 md:py-32">
+          <div className="container">
+            <Reveal>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
+                Pour chaque occasion
+              </p>
+              <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">
+                Trois façons de vivre la mer autrement.
+              </h2>
+            </Reveal>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {OCCASIONS.map(({ id, icon: Icon, title, description }) => (
-              <div
-                key={id}
-                id={id}
-                className="scroll-mt-28 border border-marine/10 bg-sable-50 p-8"
-              >
-                <Icon className="text-brass" size={28} strokeWidth={1.5} />
-                <h3 className="mt-6 font-serif text-xl text-marine">{title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-marine/70">
-                  {description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden bg-marine py-24 text-sable md:py-32">
-        <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
-              Formules
-            </p>
-            <h2 className="mt-5 font-serif text-3xl leading-tight md:text-4xl">
-              Choisissez votre format.
-            </h2>
-            <div className="mt-10 space-y-8">
-              {FORMULES.map((f) => (
-                <div key={f.name} className="border-b border-sable/15 pb-6">
-                  <div className="flex items-baseline justify-between gap-4">
-                    <p className="font-serif text-xl">{f.name}</p>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brass">
-                      {f.duration}
+            <StaggerGroup className="mt-16 grid gap-6 md:grid-cols-3">
+              {OCCASIONS.map(({ id, icon: Icon, title, description }) => (
+                <StaggerItem key={id} id={id} className="scroll-mt-28">
+                  <div className="h-full border border-marine/10 bg-sable-50 p-8">
+                    <Icon className="text-brass" size={28} strokeWidth={1.5} />
+                    <h3 className="mt-6 font-serif text-xl text-marine">{title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-marine/70">
+                      {description}
                     </p>
                   </div>
-                  <p className="mt-2 text-sm leading-relaxed text-sable/70">
-                    {f.detail}
-                  </p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
-            <Button href="/tarifs" variant="primary" className="mt-10">
-              Voir les tarifs détaillés
-            </Button>
+            </StaggerGroup>
           </div>
-          <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <Image
-              src="/images/exterieur-coucher-soleil.jpg"
-              alt="Yacht Harmonie Yacht naviguant au coucher du soleil avec passagers à bord"
-              fill
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="object-cover"
-            />
+        </section>
+
+        <section className="relative overflow-hidden bg-marine py-24 text-sable md:py-32">
+          <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
+            <Reveal>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
+                Formules
+              </p>
+              <h2 className="mt-5 font-serif text-3xl leading-tight md:text-4xl">
+                Choisissez votre format.
+              </h2>
+              <div className="mt-10 space-y-8">
+                {FORMULES.map((f) => (
+                  <div key={f.name} className="border-b border-sable/15 pb-6">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <p className="font-serif text-xl">{f.name}</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brass">
+                        {f.duration}
+                      </p>
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-sable/70">
+                      {f.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <Button href="/tarifs" variant="primary" className="mt-10">
+                Voir les tarifs détaillés
+              </Button>
+            </Reveal>
+            <Reveal className="relative aspect-[4/5] w-full overflow-hidden" y={32}>
+              <Image
+                src="/images/exterieur-coucher-soleil.jpg"
+                alt="Yacht Harmonie Yacht naviguant au coucher du soleil avec passagers à bord"
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="object-cover"
+              />
+            </Reveal>
           </div>
-        </div>
-      </section>
+        </section>
+      </WakeScrollSection>
 
       <section className="bg-sable py-24 text-center md:py-32">
-        <div className="container flex flex-col items-center">
+        <Reveal className="container flex flex-col items-center">
           <h2 className="max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">
             Un projet de sortie en tête ?
           </h2>
@@ -143,7 +148,7 @@ export default function SortiesPage() {
           <Button href="/contact" variant="primary" className="mt-10">
             Demander un devis
           </Button>
-        </div>
+        </Reveal>
       </section>
     </main>
   );

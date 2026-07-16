@@ -4,6 +4,7 @@ import { InstagramIcon } from "@/components/icons/instagram";
 import { PageHero } from "@/components/page-hero";
 import { ContactForm } from "@/components/contact-form";
 import { CONTACT } from "@/lib/nav";
+import { Reveal } from "@/components/motion/reveal";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -24,7 +25,7 @@ export default function ContactPage() {
 
       <section className="bg-sable py-24 md:py-32">
         <div className="container grid gap-16 md:grid-cols-[0.9fr_1.1fr] md:gap-20">
-          <div>
+          <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
               Nos coordonnées
             </p>
@@ -65,11 +66,11 @@ export default function ContactPage() {
                 mouillage.
               </p>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="border border-marine/10 bg-sable-50 p-8 md:p-10">
+          <Reveal className="border border-marine/10 bg-sable-50 p-8 md:p-10" delay={0.1}>
             <ContactForm />
-          </div>
+          </Reveal>
         </div>
       </section>
     </main>

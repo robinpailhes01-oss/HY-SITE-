@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { Moon, Sunrise, Waves } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
@@ -6,12 +5,15 @@ import { Button } from "@/components/ui/button";
 import { WakeScrollSection } from "@/components/wake-scroll-section";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Nuits insolites à bord",
   description:
     "Passez une nuit insolite à deux à bord d'un yacht ancré au large de Carnon : coucher de soleil, ciel étoilé et réveil face à la mer.",
-};
+  path: "/nuits-insolites",
+  image: "/images/cabine-lit-nuit-insolite.jpg",
+});
 
 const TIMELINE = [
   {

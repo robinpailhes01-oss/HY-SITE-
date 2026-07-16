@@ -6,6 +6,14 @@ import { WakeScrollSection } from "@/components/wake-scroll-section";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { HeroContent, HeroItem } from "@/components/motion/hero-content";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Harmonie Yacht — Location de yacht à Carnon, Montpellier",
+  description:
+    "Harmonie Yacht, créateurs de moments authentiques : sorties en mer à Carnon pour EVJF, anniversaires et entreprises, et nuits insolites à bord au coucher du soleil.",
+  path: "/",
+});
 
 const EXPERIENCES = [
   {

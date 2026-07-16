@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { Gauge, Ruler, ShieldCheck, Users } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
@@ -6,12 +5,15 @@ import { Button } from "@/components/ui/button";
 import { WakeScrollSection } from "@/components/wake-scroll-section";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "La flotte",
   description:
     "Découvrez le yacht Harmonie Yacht : caractéristiques, équipements et aménagements intérieurs, au départ de Carnon.",
-};
+  path: "/la-flotte",
+  image: "/images/exterieur-coucher-soleil.jpg",
+});
 
 const SPECS = [
   { icon: Ruler, label: "Longueur", value: "11 mètres" },

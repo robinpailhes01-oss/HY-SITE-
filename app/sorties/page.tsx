@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { Briefcase, Cake, PartyPopper } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
@@ -6,12 +5,15 @@ import { Button } from "@/components/ui/button";
 import { WakeScrollSection } from "@/components/wake-scroll-section";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Sorties en mer — EVJF, anniversaires, entreprise",
   description:
     "Réservez une sortie en mer à Carnon pour un EVJF, un anniversaire ou un événement d'entreprise : demi-journée ou journée à bord d'un yacht.",
-};
+  path: "/sorties",
+  image: "/images/sortie-groupe-jour.jpg",
+});
 
 const OCCASIONS = [
   {

@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { InstagramIcon } from "@/components/icons/instagram";
 import { PageHero } from "@/components/page-hero";
 import { ContactForm } from "@/components/contact-form";
 import { CONTACT } from "@/lib/nav";
 import { Reveal } from "@/components/motion/reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
   description:
     "Contactez Harmonie Yacht pour réserver une sortie en mer ou une nuit insolite au départ de Carnon, près de Montpellier.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

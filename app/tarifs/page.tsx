@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
 import { Check } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Tarifs",
   description:
     "Tarifs indicatifs des sorties en mer et nuits insolites Harmonie Yacht au départ de Carnon : après-midi, journée, coucher de soleil, nuit à bord.",
-};
+  path: "/tarifs",
+});
 
 const FORMULES = [
   {

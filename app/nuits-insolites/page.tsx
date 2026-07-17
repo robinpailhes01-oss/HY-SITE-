@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { WakeScrollSection } from "@/components/wake-scroll-section";
 import { Reveal } from "@/components/motion/reveal";
+import { ImageReveal } from "@/components/motion/image-reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { pageMetadata } from "@/lib/seo";
 
@@ -74,7 +75,7 @@ export default function NuitsInsolitesPage() {
 
         <section className="relative overflow-hidden bg-marine py-24 text-sable md:py-32">
           <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
-            <Reveal className="relative aspect-[4/5] w-full overflow-hidden" y={32}>
+            <ImageReveal className="relative aspect-[4/5] w-full overflow-hidden">
               <Image
                 src="/images/salon-interieur.jpg"
                 alt="Table dressée dans le salon du yacht pour un dîner au mouillage"
@@ -82,7 +83,7 @@ export default function NuitsInsolitesPage() {
                 sizes="(min-width: 768px) 40vw, 100vw"
                 className="object-cover"
               />
-            </Reveal>
+            </ImageReveal>
             <Reveal>
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass">
                 Formule couple

@@ -4,7 +4,9 @@ import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { WakeScrollSection } from "@/components/wake-scroll-section";
 import { Reveal } from "@/components/motion/reveal";
+import { ImageReveal } from "@/components/motion/image-reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { Counter } from "@/components/motion/counter";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -16,11 +18,11 @@ export const metadata = pageMetadata({
 });
 
 const SPECS = [
-  { icon: Ruler, label: "Longueur", value: "11 mètres" },
-  { icon: Users, label: "Capacité jour", value: "12 personnes" },
+  { icon: Ruler, label: "Longueur", count: 11, suffix: " mètres" },
+  { icon: Users, label: "Capacité jour", count: 12, suffix: " personnes" },
   { icon: Gauge, label: "Motorisation", value: "2 x 320 ch" },
   { icon: ShieldCheck, label: "Équipage", value: "Capitaine inclus" },
-];
+] as const;
 
 const EQUIPMENT = [
   "Ponton de bain gonflable et échelle de mer",
@@ -44,14 +46,20 @@ export default function LaFlottePage() {
 
       <section className="bg-sable py-20 md:py-24">
         <StaggerGroup className="container grid grid-cols-2 gap-6 md:grid-cols-4">
-          {SPECS.map(({ icon: Icon, label, value }) => (
-            <StaggerItem key={label}>
+          {SPECS.map((spec) => (
+            <StaggerItem key={spec.label}>
               <div className="border-t border-brass/40 pt-5">
-                <Icon className="text-brass-400" size={24} strokeWidth={1.5} />
+                <spec.icon className="text-brass-400" size={24} strokeWidth={1.5} />
                 <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
-                  {label}
+                  {spec.label}
                 </p>
-                <p className="mt-1 font-serif text-xl text-marine">{value}</p>
+                <p className="mt-1 font-serif text-xl text-marine">
+                  {"count" in spec ? (
+                    <Counter value={spec.count} suffix={spec.suffix} />
+                  ) : (
+                    spec.value
+                  )}
+                </p>
               </div>
             </StaggerItem>
           ))}
@@ -61,7 +69,7 @@ export default function LaFlottePage() {
       <WakeScrollSection>
         <section className="bg-sable pb-24 md:pb-32">
           <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
-            <Reveal className="relative aspect-[4/5] w-full overflow-hidden" y={32}>
+            <ImageReveal className="relative aspect-[4/5] w-full overflow-hidden">
               <Image
                 src="/images/salon-interieur.jpg"
                 alt="Salon intérieur du yacht avec boiseries acajou, banquette en cuir crème et table ovale"
@@ -69,7 +77,7 @@ export default function LaFlottePage() {
                 sizes="(min-width: 768px) 45vw, 100vw"
                 className="object-cover"
               />
-            </Reveal>
+            </ImageReveal>
             <Reveal>
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass-400">
                 Le salon
@@ -102,7 +110,7 @@ export default function LaFlottePage() {
                 bercée par le clapot du mouillage.
               </p>
             </Reveal>
-            <Reveal className="relative aspect-[4/5] w-full overflow-hidden md:order-1" y={32}>
+            <ImageReveal className="relative aspect-[4/5] w-full overflow-hidden md:order-1">
               <Image
                 src="/images/cabine-lit-nuit-insolite.jpg"
                 alt="Cabine principale avec lit rond et rangements en bois verni"
@@ -110,7 +118,7 @@ export default function LaFlottePage() {
                 sizes="(min-width: 768px) 45vw, 100vw"
                 className="object-cover"
               />
-            </Reveal>
+            </ImageReveal>
           </div>
         </section>
       </WakeScrollSection>

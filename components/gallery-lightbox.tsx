@@ -8,9 +8,16 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 interface Photo {
   src: string;
   alt: string;
+  size?: "feature" | "tall" | "normal";
 }
 
-export function GalleryLightbox({ photos }: { photos: Photo[] }) {
+const SIZE_CLASSES: Record<NonNullable<Photo["size"]>, string> = {
+  feature: "md:col-span-2 md:row-span-2",
+  tall: "md:row-span-2",
+  normal: "",
+};
+
+export function GalleryLightbox({ photos }: { photos: readonly Photo[] }) {
   const [index, setIndex] = useState<number | null>(null);
 
   const close = useCallback(() => setIndex(null), []);
@@ -36,14 +43,18 @@ export function GalleryLightbox({ photos }: { photos: Photo[] }) {
 
   return (
     <>
-      <div className="grid auto-rows-[16rem] grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:auto-rows-[14rem]">
+      <div className="grid auto-rows-[16rem] grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 md:auto-rows-[13rem]">
         {photos.map((photo, i) => (
-          <button
+          <motion.button
             key={photo.src}
             type="button"
             onClick={() => setIndex(i)}
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: (i % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
             className={`group relative overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass ${
-              i === 0 ? "md:col-span-2 md:row-span-2" : ""
+              SIZE_CLASSES[photo.size ?? "normal"]
             }`}
             aria-label={`Agrandir la photo : ${photo.alt}`}
           >
@@ -54,7 +65,7 @@ export function GalleryLightbox({ photos }: { photos: Photo[] }) {
               sizes="(min-width: 768px) 33vw, 100vw"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
-          </button>
+          </motion.button>
         ))}
       </div>
 

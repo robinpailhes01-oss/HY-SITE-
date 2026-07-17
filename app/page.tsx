@@ -10,6 +10,7 @@ import { Parallax } from "@/components/motion/parallax";
 import { SplitText } from "@/components/motion/split-text";
 import { Magnetic } from "@/components/motion/magnetic";
 import { PinnedHorizontal } from "@/components/motion/pinned-horizontal";
+import { SignatureStatement } from "@/components/signature-statement";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -214,6 +215,8 @@ export default function HomePage() {
           </div>
         </section>
       </WakeScrollSection>
+
+      <SignatureStatement />
 
       <section className="relative overflow-hidden bg-marine py-24 text-center text-sable md:py-32">
         <Reveal className="container relative z-10 flex flex-col items-center">

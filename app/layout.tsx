@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Fraunces, Manrope, Beau_Rivage } from "next/font/google";
 import { MotionConfig } from "motion/react";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
@@ -17,6 +17,12 @@ const fraunces = Fraunces({
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
+});
+
+const beauRivage = Beau_Rivage({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-script",
 });
 
 const SITE_TITLE = "Harmonie Yacht — Location de yacht à Carnon, Montpellier";
@@ -76,7 +82,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${fraunces.variable} ${manrope.variable} font-sans antialiased bg-sable text-marine`}
+        className={`${fraunces.variable} ${manrope.variable} ${beauRivage.variable} font-sans antialiased bg-sable text-marine`}
       >
         <MotionConfig reducedMotion="user">
           <SiteCursor />

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/nav";
 import { Button } from "@/components/ui/button";
+import { Monogram } from "@/components/monogram";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -39,12 +40,15 @@ export function SiteHeader() {
         <Link
           href="/"
           className={cn(
-            "font-serif text-lg tracking-[0.2em] uppercase transition-colors duration-500",
+            "flex items-center gap-3 transition-colors duration-500",
             transparent ? "text-sable" : "text-marine"
           )}
         >
-          Harmonie{" "}
-          <span className={transparent ? "text-brass" : "text-brass-400"}>Yacht</span>
+          <Monogram className={cn("h-8 w-8 shrink-0", transparent ? "text-brass" : "text-brass-400")} />
+          <span className="font-serif text-lg tracking-[0.2em] uppercase">
+            Harmonie{" "}
+            <span className={transparent ? "text-brass" : "text-brass-400"}>Yacht</span>
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

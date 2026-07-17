@@ -16,10 +16,12 @@ const PHOTOS = [
   {
     src: "/images/hero-sillage-coucher-soleil.jpg",
     alt: "Sillage doré au coucher du soleil vu depuis le pont arrière",
+    size: "feature",
   },
   {
     src: "/images/exterieur-coucher-soleil.jpg",
     alt: "Yacht Harmonie Yacht naviguant au coucher du soleil",
+    size: "tall",
   },
   {
     src: "/images/sortie-groupe-jour.jpg",
@@ -33,7 +35,7 @@ const PHOTOS = [
     src: "/images/cabine-lit-nuit-insolite.jpg",
     alt: "Cabine principale avec lit rond, préparée pour une nuit insolite",
   },
-];
+] as const;
 
 export default function GaleriePage() {
   return (

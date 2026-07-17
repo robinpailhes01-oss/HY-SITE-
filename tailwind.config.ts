@@ -53,6 +53,7 @@ const config: Config = {
       fontFamily: {
         serif: ["var(--font-fraunces)", "Georgia", "serif"],
         sans: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        script: ["var(--font-script)", "cursive"],
       },
       borderRadius: {
         lg: "0.75rem",

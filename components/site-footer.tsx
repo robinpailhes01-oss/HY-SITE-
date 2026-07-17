@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { InstagramIcon } from "@/components/icons/instagram";
+import { Monogram } from "@/components/monogram";
 import { CONTACT, NAV_LINKS } from "@/lib/nav";
 
 export function SiteFooter() {
@@ -9,7 +10,8 @@ export function SiteFooter() {
       <div className="container py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <p className="font-serif text-2xl tracking-[0.15em] uppercase">
+            <Monogram className="h-10 w-10 text-brass" />
+            <p className="mt-4 font-serif text-2xl tracking-[0.15em] uppercase">
               Harmonie <span className="text-brass">Yacht</span>
             </p>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-sable/70">

@@ -4,6 +4,7 @@ import { MotionConfig } from "motion/react";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteCursor } from "@/components/cursor/site-cursor";
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const fraunces = Fraunces({
@@ -78,6 +79,7 @@ export default function RootLayout({
         className={`${fraunces.variable} ${manrope.variable} font-sans antialiased bg-sable text-marine`}
       >
         <MotionConfig reducedMotion="user">
+          <SiteCursor />
           <SiteHeader />
           {children}
           <SiteFooter />

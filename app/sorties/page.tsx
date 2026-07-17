@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { WakeScrollSection } from "@/components/wake-scroll-section";
 import { Reveal } from "@/components/motion/reveal";
+import { ImageReveal } from "@/components/motion/image-reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { pageMetadata } from "@/lib/seo";
 
@@ -124,7 +125,7 @@ export default function SortiesPage() {
                 Voir les tarifs détaillés
               </Button>
             </Reveal>
-            <Reveal className="relative aspect-[4/5] w-full overflow-hidden" y={32}>
+            <ImageReveal className="relative aspect-[4/5] w-full overflow-hidden">
               <Image
                 src="/images/exterieur-coucher-soleil.jpg"
                 alt="Yacht Harmonie Yacht naviguant au coucher du soleil avec passagers à bord"
@@ -132,7 +133,7 @@ export default function SortiesPage() {
                 sizes="(min-width: 768px) 40vw, 100vw"
                 className="object-cover"
               />
-            </Reveal>
+            </ImageReveal>
           </div>
         </section>
       </WakeScrollSection>

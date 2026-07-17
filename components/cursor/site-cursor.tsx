@@ -18,6 +18,7 @@ export function SiteCursor() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!canHover || reduceMotion) return;
     setEnabled(true);
+    document.documentElement.classList.add("custom-cursor-active");
 
     const move = (e: PointerEvent) => {
       x.set(e.clientX);
@@ -31,6 +32,7 @@ export function SiteCursor() {
     window.addEventListener("pointermove", move);
     window.addEventListener("pointerover", over);
     return () => {
+      document.documentElement.classList.remove("custom-cursor-active");
       window.removeEventListener("pointermove", move);
       window.removeEventListener("pointerover", over);
     };

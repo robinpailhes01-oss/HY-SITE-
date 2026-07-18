@@ -33,6 +33,73 @@ html.custom-cursor-active * {
   cursor: none !important;
 }
 
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.marquee-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(16, 27, 46, 0.35);
+}
+
+.marquee-track {
+  animation: marquee-scroll 45s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ken-burns {
+  animation: ken-burns 26s ease-out forwards;
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+.star-twinkle {
+  animation: star-twinkle 4s ease-in-out infinite;
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .star-twinkle {
+    animation: none;
+    opacity: 0.5;
+  }
+  .ken-burns {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

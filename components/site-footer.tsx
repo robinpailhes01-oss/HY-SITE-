@@ -6,7 +6,13 @@ import { CONTACT, NAV_LINKS } from "@/lib/nav";
 
 export function SiteFooter() {
   return (
-    <footer className="relative bg-marine text-sable">
+    <footer className="relative overflow-hidden bg-marine text-sable">
+      <p
+        className="pointer-events-none select-none whitespace-nowrap px-2 pt-10 text-center font-serif text-[13.5vw] uppercase leading-none tracking-[0.06em] text-sable/[0.05] md:pt-14"
+        aria-hidden="true"
+      >
+        Harmonie Yacht
+      </p>
       <div className="container py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>

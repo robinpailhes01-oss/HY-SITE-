@@ -6,7 +6,7 @@ import { Reveal } from "@/components/motion/reveal";
 
 export function SignatureStatement() {
   return (
-    <section className="relative overflow-hidden bg-marine-300 py-24 text-center text-sable md:py-36">
+    <section className="relative overflow-hidden py-24 text-center text-sable md:py-36">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(184,147,90,0.1),transparent_60%)]" />
 
       <div className="container relative flex flex-col items-center">

@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Check, Copy, Moon, Sun } from "lucide-react";
 import { Calendar } from "@/components/booking/calendar";
 import { Button } from "@/components/ui/button";
+import { ReviewToast } from "@/components/reviews/review-toast";
 import { CONTACT } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
@@ -148,6 +149,8 @@ export function BookingForm() {
 
   return (
     <div>
+      <ReviewToast step={step} experience={experience} active={!submitted} />
+
       {/* Progression */}
       <ol className="flex flex-wrap gap-x-6 gap-y-2">
         {STEPS.map((label, i) => (

@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { BookingForm } from "@/components/booking/booking-form";
-import { ReviewToast } from "@/components/reviews/review-toast";
 import { Reveal } from "@/components/motion/reveal";
 import { pageMetadata } from "@/lib/seo";
 
@@ -14,7 +13,6 @@ export const metadata = pageMetadata({
 export default function ReserverPage() {
   return (
     <main className="bg-sable">
-      <ReviewToast />
       <section className="pb-24 pt-32 md:pb-32 md:pt-40">
         <div className="container max-w-4xl">
           <Reveal>

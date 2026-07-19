@@ -3,83 +3,134 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Star, X } from "lucide-react";
-import { REVIEWS } from "@/lib/reviews";
+import { Monogram } from "@/components/monogram";
+import { REVIEWS, type Review } from "@/lib/reviews";
 
-const FIRST_DELAY = 3500;
-const SHOW_DURATION = 7000;
-const GAP_BETWEEN = 12000;
-const MAX_SHOWN = 3;
+const APPEAR_DELAY = 1300;
+const SHOW_DURATION = 8500;
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Pop-up discret sur la page réservation : un avis client apparaît
- * délicatement en bas d'écran, puis laisse place au suivant.
- * Décoratif (aria-hidden), rejetable, désactivé en reduced-motion.
+ * Avis contextuel du parcours de réservation. Deux moments choisis :
+ * juste après le choix de l'expérience (l'avis affiché correspond au choix
+ * du visiteur) et à l'étape des coordonnées (l'instant de l'engagement).
+ * Un seul passage par moment, jamais deux fois le même avis, rejetable,
+ * silencieux pour les lecteurs d'écran et en reduced-motion.
  */
-export function ReviewToast() {
-  const [index, setIndex] = useState<number | null>(null);
+export function ReviewToast({
+  step,
+  experience,
+  active,
+}: {
+  step: number;
+  experience: "jour" | "nuit" | null;
+  active: boolean;
+}) {
+  const [current, setCurrent] = useState<Review | null>(null);
   const dismissed = useRef(false);
-  const shown = useRef(0);
+  const shownSteps = useRef<Set<number>>(new Set());
+  const usedReviews = useRef<Set<string>>(new Set());
 
   useEffect(() => {
+    if (!active || dismissed.current) {
+      setCurrent(null);
+      return;
+    }
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (REVIEWS.length === 0) return;
 
-    const timers: ReturnType<typeof setTimeout>[] = [];
+    if (step !== 1 && step !== 3) {
+      setCurrent(null);
+      return;
+    }
+    if (shownSteps.current.has(step)) return;
 
-    const showNext = (i: number) => {
-      if (dismissed.current || shown.current >= MAX_SHOWN) return;
-      shown.current += 1;
-      setIndex(i % REVIEWS.length);
-      timers.push(
-        setTimeout(() => {
-          setIndex(null);
-          timers.push(setTimeout(() => showNext(i + 1), GAP_BETWEEN));
-        }, SHOW_DURATION)
-      );
+    const matching = REVIEWS.filter((r) => !usedReviews.current.has(r.name)).find(
+      (r) => {
+        const isNuit = r.occasion.toLowerCase().includes("nuit");
+        return experience === "nuit" ? isNuit : !isNuit;
+      }
+    );
+    if (!matching) return;
+
+    shownSteps.current.add(step);
+    const show = setTimeout(() => {
+      usedReviews.current.add(matching.name);
+      setCurrent(matching);
+    }, APPEAR_DELAY);
+    const hide = setTimeout(() => setCurrent(null), APPEAR_DELAY + SHOW_DURATION);
+
+    return () => {
+      clearTimeout(show);
+      clearTimeout(hide);
     };
-
-    timers.push(setTimeout(() => showNext(0), FIRST_DELAY));
-    return () => timers.forEach(clearTimeout);
-  }, []);
-
-  const review = index !== null ? REVIEWS[index] : null;
+  }, [step, experience, active]);
 
   return (
     <div
-      className="pointer-events-none fixed bottom-20 left-4 right-4 z-[75] md:bottom-8 md:left-8 md:right-auto md:w-96"
+      className="pointer-events-none fixed bottom-4 left-4 right-4 z-[75] sm:right-auto sm:w-[380px] md:bottom-8 md:left-8"
       aria-hidden="true"
     >
       <AnimatePresence>
-        {review && (
+        {current && (
           <motion.div
-            initial={{ opacity: 0, y: 24, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 12, scale: 0.98 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="pointer-events-auto border border-brass/30 bg-marine-400/95 p-5 shadow-[0_16px_48px_rgba(7,12,21,0.45)] backdrop-blur-sm"
+            initial={{ opacity: 0, y: 32, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="pointer-events-auto relative overflow-hidden bg-marine-400/90 shadow-[0_20px_60px_rgba(7,12,21,0.5)] backdrop-blur-md"
           >
-            <button
-              type="button"
-              onClick={() => {
-                dismissed.current = true;
-                setIndex(null);
-              }}
-              aria-label="Fermer l'avis"
-              className="absolute right-3 top-3 text-sable/50 transition-colors hover:text-sable"
-            >
-              <X size={15} />
-            </button>
-            <div className="flex gap-1">
-              {Array.from({ length: review.rating }, (_, i) => (
-                <Star key={i} size={12} className="fill-brass text-brass" />
-              ))}
+            {/* Filet doré supérieur */}
+            <div
+              className="h-px w-full bg-gradient-to-r from-brass via-brass/40 to-transparent"
+              aria-hidden="true"
+            />
+
+            <div className="p-6">
+              <button
+                type="button"
+                onClick={() => {
+                  dismissed.current = true;
+                  setCurrent(null);
+                }}
+                aria-label="Fermer l'avis"
+                className="absolute right-3 top-4 p-1 text-sable/40 transition-colors hover:text-sable"
+              >
+                <X size={14} />
+              </button>
+
+              <div className="flex items-center justify-between pr-6">
+                <div className="flex gap-1">
+                  {Array.from({ length: current.rating }, (_, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.4 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.35 + i * 0.07, duration: 0.35, ease: EASE }}
+                    >
+                      <Star size={12} className="fill-brass text-brass" />
+                    </motion.span>
+                  ))}
+                </div>
+                <Monogram className="h-6 w-6 text-brass/50" />
+              </div>
+
+              <p className="mt-4 font-serif text-[0.95rem] italic leading-relaxed text-sable/95">
+                « {current.text} »
+              </p>
+              <p className="mt-4 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-sable/50">
+                {current.name}
+                <span className="ml-2 text-brass/80">· {current.occasion}</span>
+              </p>
             </div>
-            <p className="mt-3 font-serif text-sm italic leading-relaxed text-sable/90">
-              « {review.text} »
-            </p>
-            <p className="mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-sable/55">
-              {review.name} <span className="text-brass">· {review.occasion}</span>
-            </p>
+
+            {/* Filet de temps restant */}
+            <motion.div
+              className="h-px origin-left bg-brass/35"
+              initial={{ scaleX: 1 }}
+              animate={{ scaleX: 0 }}
+              transition={{ duration: SHOW_DURATION / 1000, ease: "linear" }}
+              aria-hidden="true"
+            />
           </motion.div>
         )}
       </AnimatePresence>

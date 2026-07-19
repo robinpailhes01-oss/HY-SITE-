@@ -68,7 +68,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button href="/contact" variant="primary" className="text-xs">
+          <Button href="/reserver" variant="primary" className="text-xs">
             Réserver
           </Button>
         </div>
@@ -107,7 +107,7 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <Button href="/contact" variant="primary" className="mt-5 w-full">
+          <Button href="/reserver" variant="primary" className="mt-5 w-full">
             Réserver
           </Button>
         </nav>

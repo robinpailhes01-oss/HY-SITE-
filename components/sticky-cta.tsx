@@ -31,7 +31,7 @@ export function StickyCta() {
                 Capitaine inclus · Report météo gratuit
               </p>
             </div>
-            <Button href="/contact" variant="primary" className="shrink-0 px-5 py-2.5 text-[0.7rem]">
+            <Button href="/reserver" variant="primary" className="shrink-0 px-5 py-2.5 text-[0.7rem]">
               Réserver
             </Button>
           </div>

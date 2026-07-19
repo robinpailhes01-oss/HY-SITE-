@@ -27,9 +27,15 @@ export function ReviewToast({
   active: boolean;
 }) {
   const [current, setCurrent] = useState<Review | null>(null);
+  const [fromTop, setFromTop] = useState(false);
   const dismissed = useRef(false);
   const shownSteps = useRef<Set<number>>(new Set());
   const usedReviews = useRef<Set<string>>(new Set());
+
+  useEffect(() => {
+    // Sur mobile, la carte glisse depuis le haut comme une notification.
+    setFromTop(window.matchMedia("(max-width: 767px)").matches);
+  }, []);
 
   useEffect(() => {
     if (!active || dismissed.current) {
@@ -67,15 +73,15 @@ export function ReviewToast({
 
   return (
     <div
-      className="pointer-events-none fixed bottom-4 left-4 right-4 z-[75] sm:right-auto sm:w-[380px] md:bottom-8 md:left-8"
+      className="pointer-events-none fixed left-4 right-4 top-24 z-[75] md:bottom-8 md:left-8 md:right-auto md:top-auto md:w-[380px]"
       aria-hidden="true"
     >
       <AnimatePresence>
         {current && (
           <motion.div
-            initial={{ opacity: 0, y: 32, filter: "blur(6px)" }}
+            initial={{ opacity: 0, y: fromTop ? -28 : 32, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+            exit={{ opacity: 0, y: fromTop ? -12 : 12, filter: "blur(4px)" }}
             transition={{ duration: 0.7, ease: EASE }}
             className="pointer-events-auto relative overflow-hidden bg-marine-400/90 shadow-[0_20px_60px_rgba(7,12,21,0.5)] backdrop-blur-md"
           >

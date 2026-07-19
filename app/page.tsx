@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -17,6 +19,8 @@ import { Stars } from "@/components/voyage/stars";
 import { MarqueeBand } from "@/components/marquee-band";
 import { SignatureStatement } from "@/components/signature-statement";
 import { StickyCta } from "@/components/sticky-cta";
+import { HeroVideo } from "@/components/hero-video";
+import { ReviewsSection } from "@/components/reviews/reviews-section";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -75,6 +79,8 @@ const EXPERIENCES = [
 ];
 
 export default function HomePage() {
+  const hasHeroVideo = existsSync(join(process.cwd(), "public/videos/hero.mp4"));
+
   return (
     <main>
       <StickyCta />
@@ -90,6 +96,7 @@ export default function HomePage() {
             sizes="100vw"
             className="ken-burns object-cover"
           />
+          {hasHeroVideo && <HeroVideo />}
         </Parallax>
         <div className="absolute inset-0 bg-gradient-to-t from-marine-400/90 via-marine-400/30 to-marine-400/10" />
 
@@ -318,6 +325,9 @@ export default function HomePage() {
           </div>
         </section>
       </VoyageScroller>
+
+      {/* ── La preuve : leurs traversées ─────────────────────────────── */}
+      <ReviewsSection />
     </main>
   );
 }

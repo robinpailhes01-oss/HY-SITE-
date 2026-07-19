@@ -9,6 +9,7 @@ import { SplitText } from "@/components/motion/split-text";
 import { Magnetic } from "@/components/motion/magnetic";
 import { PinnedHorizontal } from "@/components/motion/pinned-horizontal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import { TraverseeChooser } from "@/components/experience/traversee-chooser";
 import { VoyageScroller } from "@/components/voyage/voyage-scroller";
 import { VoyageSun } from "@/components/voyage/voyage-sun";
 import { ChapterHeader } from "@/components/voyage/chapter-header";
@@ -141,6 +142,9 @@ export default function HomePage() {
           <span className="block h-10 w-px animate-pulse bg-gradient-to-b from-sable/0 via-sable/70 to-sable/0" />
         </div>
       </section>
+
+      {/* ── Le choix : jour ou nuit ──────────────────────────────────── */}
+      <TraverseeChooser />
 
       {/* ── La traversée : le fond vit du jour à la nuit ─────────────── */}
       <VoyageSun />

@@ -60,6 +60,17 @@ html.lenis body {
   }
 }
 
+.chooser-panel {
+  flex: 1 1 0%;
+  transition: flex-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (min-width: 768px) {
+  .chooser-panel:hover {
+    flex-grow: 1.75;
+  }
+}
+
 .ken-burns {
   animation: ken-burns 26s ease-out forwards;
 }

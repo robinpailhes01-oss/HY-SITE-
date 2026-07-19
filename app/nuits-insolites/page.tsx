@@ -203,7 +203,7 @@ export default function NuitsInsolitesPage() {
             semaines à l&apos;avance en haute saison.
           </p>
           <Magnetic className="mt-10 inline-block">
-            <Button href="/contact" variant="primary">
+            <Button href="/reserver?experience=nuit" variant="primary">
               Réserver ma nuit insolite
             </Button>
           </Magnetic>

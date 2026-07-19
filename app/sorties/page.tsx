@@ -66,6 +66,86 @@ export default function SortiesPage() {
         ]}
       />
 
+      {/* Les formules & tarifs, avant le déroulé */}
+      <section className="bg-sable py-20 md:py-28">
+        <div className="container">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass-400">
+              Les formules
+            </p>
+            <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">
+              Choisissez votre format de journée.
+            </h2>
+          </Reveal>
+
+          <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                id: "coucher-de-soleil",
+                name: "Coucher de soleil",
+                duration: "3 heures",
+                price: "Dès 390 €",
+                detail: "Départ en fin de journée, pensée pour l'apéritif doré et les photos.",
+              },
+              {
+                id: "apres-midi",
+                name: "Après-midi",
+                duration: "4 heures",
+                price: "Dès 590 €",
+                detail: "Le format préféré : baignade, ponton et retour avant le couchant.",
+                featured: true,
+              },
+              {
+                id: "journee",
+                name: "Journée",
+                duration: "8 heures",
+                price: "Dès 990 €",
+                detail: "Départ le matin, déjeuner au mouillage, la mer toute la journée.",
+              },
+            ].map((f) => (
+              <StaggerItem key={f.id}>
+                <div
+                  className={`flex h-full flex-col justify-between border p-8 ${
+                    f.featured
+                      ? "border-brass bg-marine text-sable"
+                      : "border-marine/10 bg-sable-50 text-marine"
+                  }`}
+                >
+                  <div>
+                    <p
+                      className={`text-xs font-semibold uppercase tracking-[0.2em] ${
+                        f.featured ? "text-brass" : "text-marine/65"
+                      }`}
+                    >
+                      {f.duration}
+                    </p>
+                    <h3 className="mt-3 font-serif text-2xl">{f.name}</h3>
+                    <p className={`mt-3 font-serif text-xl ${f.featured ? "text-brass" : "text-brass-400"}`}>
+                      {f.price}
+                    </p>
+                    <p className={`mt-4 text-sm leading-relaxed ${f.featured ? "text-sable/80" : "text-marine/70"}`}>
+                      {f.detail}
+                    </p>
+                  </div>
+                  <Button
+                    href={`/reserver?experience=jour&formule=${f.id}`}
+                    variant={f.featured ? "primary" : "outline"}
+                    className={`mt-8 ${!f.featured ? "border-marine/30 hover:bg-marine/5" : ""}`}
+                  >
+                    Réserver
+                  </Button>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+
+          <p className="mt-6 text-xs text-marine/65">
+            Capitaine et carburant inclus dans toutes les formules. EVJF,
+            anniversaires et entreprises : devis personnalisé sur demande.
+          </p>
+        </div>
+      </section>
+
       <VoyageScroller>
         {/* 14h00 — L'embarquement */}
         <section

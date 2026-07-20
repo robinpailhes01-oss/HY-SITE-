@@ -93,6 +93,7 @@ export default function RootLayout({
           <SiteHeader />
           {children}
           <SiteFooter />
+          <div className="grain-overlay" aria-hidden="true" />
         </MotionConfig>
       </body>
     </html>

@@ -17,14 +17,14 @@ export default function ReserverPage() {
         <div className="container max-w-4xl">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass-400">
-              Réservation
+              Embarquement
             </p>
             <h1 className="mt-4 font-serif text-3xl italic leading-tight text-marine sm:text-4xl md:text-5xl">
-              Réservez votre traversée.
+              Dites-nous quand, on s&apos;occupe du reste.
             </h1>
             <p className="mt-5 max-w-lg text-base leading-relaxed text-marine/70">
-              Quatre étapes, deux minutes — et nous revenons vers vous sous
-              24h pour confirmer la disponibilité.
+              Deux minutes, quatre questions — le capitaine vous répond avant
+              demain soir, la météo en main.
             </p>
           </Reveal>
 

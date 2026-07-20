@@ -7,15 +7,16 @@ import { Monogram } from "@/components/monogram";
 import { REVIEWS, type Review } from "@/lib/reviews";
 
 const APPEAR_DELAY = 1300;
-const SHOW_DURATION = 8500;
+const SHOW_DURATION = 9000;
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Avis contextuel du parcours de réservation. Deux moments choisis :
- * juste après le choix de l'expérience (l'avis affiché correspond au choix
- * du visiteur) et à l'étape des coordonnées (l'instant de l'engagement).
- * Un seul passage par moment, jamais deux fois le même avis, rejetable,
- * silencieux pour les lecteurs d'écran et en reduced-motion.
+ * Avis contextuel du parcours de réservation, façon « mot qui remonte à la
+ * surface » : une note manuscrite sur papier crème, scellée d'un cachet de
+ * cire au monogramme, qui émerge en flottant doucement. Deux moments :
+ * après le choix de l'expérience (l'avis correspond au choix) et à l'étape
+ * des coordonnées. Un seul passage par moment, jamais deux fois le même,
+ * rejetable, silencieux pour les lecteurs d'écran et en reduced-motion.
  */
 export function ReviewToast({
   step,
@@ -27,15 +28,9 @@ export function ReviewToast({
   active: boolean;
 }) {
   const [current, setCurrent] = useState<Review | null>(null);
-  const [fromTop, setFromTop] = useState(false);
   const dismissed = useRef(false);
   const shownSteps = useRef<Set<number>>(new Set());
   const usedReviews = useRef<Set<string>>(new Set());
-
-  useEffect(() => {
-    // Sur mobile, la carte glisse depuis le haut comme une notification.
-    setFromTop(window.matchMedia("(max-width: 767px)").matches);
-  }, []);
 
   useEffect(() => {
     if (!active || dismissed.current) {
@@ -73,70 +68,94 @@ export function ReviewToast({
 
   return (
     <div
-      className="pointer-events-none fixed left-4 right-4 top-24 z-[75] md:bottom-8 md:left-8 md:right-auto md:top-auto md:w-[380px]"
+      className="pointer-events-none fixed bottom-6 left-4 right-4 z-[75] flex justify-center sm:left-6 sm:right-auto sm:block sm:w-[360px] md:bottom-8 md:left-8"
       aria-hidden="true"
     >
       <AnimatePresence>
         {current && (
           <motion.div
-            initial={{ opacity: 0, y: fromTop ? -28 : 32, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: fromTop ? -12 : 12, filter: "blur(4px)" }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="pointer-events-auto relative overflow-hidden bg-marine-400/90 shadow-[0_20px_60px_rgba(7,12,21,0.5)] backdrop-blur-md"
+            // Émersion : le mot remonte du fond en flottant, puis se laisse
+            // bercer par une houle lente jusqu'à s'effacer.
+            initial={{ opacity: 0, y: 120, rotate: -3, filter: "blur(8px)" }}
+            animate={{
+              opacity: 1,
+              y: [0, -6, 0],
+              rotate: [-1, 1, -1],
+              filter: "blur(0px)",
+            }}
+            exit={{ opacity: 0, y: 60, rotate: -2, filter: "blur(6px)" }}
+            transition={{
+              opacity: { duration: 0.8, ease: EASE },
+              filter: { duration: 0.8, ease: EASE },
+              y: {
+                duration: 7,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "mirror",
+              },
+              rotate: {
+                duration: 9,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "mirror",
+              },
+            }}
+            className="pointer-events-auto relative w-full max-w-[340px] origin-bottom"
           >
-            {/* Filet doré supérieur */}
-            <div
-              className="h-px w-full bg-gradient-to-r from-brass via-brass/40 to-transparent"
-              aria-hidden="true"
-            />
+            {/* Cachet de cire — le sceau qui ferme le mot */}
+            <div className="absolute -top-5 left-1/2 z-10 -translate-x-1/2">
+              <motion.div
+                initial={{ scale: 0, rotate: -30 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.45, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-terracotta-300 shadow-[0_4px_12px_rgba(138,64,35,0.4)] ring-1 ring-terracotta-100/40"
+              >
+                <Monogram className="h-6 w-6 text-sable/90" />
+              </motion.div>
+            </div>
 
-            <div className="p-6">
+            {/* Le papier du mot */}
+            <div className="relative overflow-hidden border border-brass/25 bg-sable-50 px-6 pb-6 pt-8 shadow-[0_24px_60px_rgba(7,12,21,0.28)]">
               <button
                 type="button"
                 onClick={() => {
                   dismissed.current = true;
                   setCurrent(null);
                 }}
-                aria-label="Fermer l'avis"
-                className="absolute right-3 top-4 p-1 text-sable/40 transition-colors hover:text-sable"
+                aria-label="Fermer le mot"
+                className="absolute right-3 top-3 p-1 text-marine/30 transition-colors hover:text-marine/70"
               >
                 <X size={14} />
               </button>
 
-              <div className="flex items-center justify-between pr-6">
-                <div className="flex gap-1">
-                  {Array.from({ length: current.rating }, (_, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ opacity: 0, scale: 0.4 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.35 + i * 0.07, duration: 0.35, ease: EASE }}
-                    >
-                      <Star size={12} className="fill-brass text-brass" />
-                    </motion.span>
-                  ))}
-                </div>
-                <Monogram className="h-6 w-6 text-brass/50" />
+              <p className="text-center font-script text-2xl leading-none text-brass-400">
+                Un mot de nos invités
+              </p>
+
+              <div className="mt-3 flex justify-center gap-1">
+                {Array.from({ length: current.rating }, (_, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.4 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.55 + i * 0.07, duration: 0.35, ease: EASE }}
+                  >
+                    <Star size={11} className="fill-brass text-brass" />
+                  </motion.span>
+                ))}
               </div>
 
-              <p className="mt-4 font-serif text-[0.95rem] italic leading-relaxed text-sable/95">
+              <p className="mt-4 text-center font-serif text-[0.95rem] italic leading-relaxed text-marine/90">
                 « {current.text} »
               </p>
-              <p className="mt-4 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-sable/50">
+
+              <div className="mx-auto mt-5 h-px w-10 bg-brass/40" aria-hidden="true" />
+
+              <p className="mt-4 text-center text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-marine/50">
                 {current.name}
-                <span className="ml-2 text-brass/80">· {current.occasion}</span>
+                <span className="ml-2 text-terracotta-200">· {current.occasion}</span>
               </p>
             </div>
-
-            {/* Filet de temps restant */}
-            <motion.div
-              className="h-px origin-left bg-brass/35"
-              initial={{ scaleX: 1 }}
-              animate={{ scaleX: 0 }}
-              transition={{ duration: SHOW_DURATION / 1000, ease: "linear" }}
-              aria-hidden="true"
-            />
           </motion.div>
         )}
       </AnimatePresence>

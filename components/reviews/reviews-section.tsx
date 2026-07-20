@@ -34,7 +34,7 @@ export function ReviewsSection() {
                 </div>
                 <figcaption className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-sable/60">
                   {review.name}
-                  <span className="ml-2 text-brass">· {review.occasion}</span>
+                  <span className="ml-2 text-terracotta-100">· {review.occasion}</span>
                 </figcaption>
               </figure>
             </StaggerItem>

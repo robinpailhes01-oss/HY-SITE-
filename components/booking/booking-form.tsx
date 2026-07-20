@@ -32,7 +32,7 @@ const FORMULES: Record<Experience, Formule[]> = {
   ],
 };
 
-const STEPS = ["L'expérience", "La formule", "La date", "Vos coordonnées"];
+const STEPS = ["Votre envie", "Votre moment", "Votre date", "Faisons connaissance"];
 
 function formatDate(date: Date) {
   return date.toLocaleDateString("fr-FR", {
@@ -121,15 +121,16 @@ export function BookingForm() {
   if (submitted) {
     return (
       <div className="border border-brass/40 bg-sable-50 p-8 md:p-10">
-        <p className="font-script text-3xl text-brass-400">Merci {name.split(" ")[0]} !</p>
+        <p className="font-script text-3xl text-brass-400">À très vite, {name.split(" ")[0]}</p>
         <h2 className="mt-3 font-serif text-2xl text-marine">
-          Votre demande est prête à nous parvenir.
+          On garde votre place à bord.
         </h2>
         <p className="mt-4 max-w-lg text-sm leading-relaxed text-marine/70">
-          Votre messagerie s&apos;est ouverte avec la demande pré-remplie — il ne
-          reste qu&apos;à l&apos;envoyer. Nous confirmons la disponibilité sous
-          24h. Pas d&apos;application mail sur cet appareil ? Copiez le
-          récapitulatif ci-dessous et envoyez-le nous sur Instagram{" "}
+          Votre messagerie s&apos;est ouverte avec le mot déjà écrit — il ne
+          reste qu&apos;à l&apos;envoyer. Le capitaine consulte la météo et
+          vous répond avant demain soir. Pas d&apos;application mail sur cet
+          appareil ? Copiez le mot ci-dessous et glissez-le nous en message
+          sur Instagram{" "}
           <span className="font-semibold text-marine">{CONTACT.instagram}</span>.
         </p>
         <pre className="mt-6 max-h-64 overflow-auto whitespace-pre-wrap border border-marine/10 bg-sable p-5 font-sans text-xs leading-relaxed text-marine/80">
@@ -141,7 +142,7 @@ export function BookingForm() {
           className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brass-400 transition-colors hover:text-terracotta-300"
         >
           {copied ? <Check size={15} /> : <Copy size={15} />}
-          {copied ? "Copié !" : "Copier le récapitulatif"}
+          {copied ? "Copié !" : "Copier le mot"}
         </button>
       </div>
     );
@@ -432,7 +433,7 @@ export function BookingForm() {
           </Button>
         ) : (
           <Button type="button" variant="primary" disabled={!canContinue} onClick={handleSubmit}>
-            Envoyer ma demande
+            Demander cette date
           </Button>
         )}
       </div>

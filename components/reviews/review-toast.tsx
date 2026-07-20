@@ -74,48 +74,69 @@ export function ReviewToast({
       <AnimatePresence>
         {current && (
           <motion.div
-            // Émersion : le mot remonte du fond en flottant, puis se laisse
-            // bercer par une houle lente jusqu'à s'effacer.
-            initial={{ opacity: 0, y: 120, rotate: -3, filter: "blur(8px)" }}
-            animate={{
-              opacity: 1,
-              y: [0, -6, 0],
-              rotate: [-1, 1, -1],
-              filter: "blur(0px)",
-            }}
-            exit={{ opacity: 0, y: 60, rotate: -2, filter: "blur(6px)" }}
+            // Le ballon soulève le mot depuis le fond, puis le tient suspendu :
+            // l'ensemble monte au buste, respire (houle lente verticale), et le
+            // mot se balance sous le fil comme un pendule.
+            initial={{ opacity: 0, y: 150, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: [0, -7, 0], filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -180, filter: "blur(6px)" }}
             transition={{
-              opacity: { duration: 0.8, ease: EASE },
-              filter: { duration: 0.8, ease: EASE },
-              y: {
-                duration: 7,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "mirror",
-              },
-              rotate: {
-                duration: 9,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "mirror",
-              },
+              opacity: { duration: 0.9, ease: EASE },
+              filter: { duration: 0.9, ease: EASE },
+              y: { duration: 6.5, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" },
             }}
-            className="pointer-events-auto relative w-full max-w-[340px] origin-bottom"
+            className="pointer-events-auto flex w-full max-w-[340px] flex-col items-center"
           >
-            {/* Cachet de cire — le sceau qui ferme le mot */}
-            <div className="absolute -top-5 left-1/2 z-10 -translate-x-1/2">
-              <motion.div
-                initial={{ scale: 0, rotate: -30 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.45, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-terracotta-300 shadow-[0_4px_12px_rgba(138,64,35,0.4)] ring-1 ring-terracotta-100/40"
-              >
-                <Monogram className="h-6 w-6 text-sable/90" />
-              </motion.div>
-            </div>
+            {/* Le ballon qui tire le mot vers le haut */}
+            <motion.div
+              initial={{ scale: 0, y: 10 }}
+              animate={{ scale: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+              aria-hidden="true"
+            >
+              <svg width="46" height="60" viewBox="0 0 46 60" fill="none">
+                <defs>
+                  <radialGradient id="hy-balloon" cx="38%" cy="32%" r="70%">
+                    <stop offset="0%" stopColor="#EFDFC4" />
+                    <stop offset="45%" stopColor="#DCC091" />
+                    <stop offset="100%" stopColor="#B3562F" />
+                  </radialGradient>
+                </defs>
+                <path
+                  d="M23 3 C33 3 40 11 40 22 C40 33 31 41 24 45 L22 45 C15 41 6 33 6 22 C6 11 13 3 23 3 Z"
+                  fill="url(#hy-balloon)"
+                  stroke="#96723F"
+                  strokeWidth="0.6"
+                />
+                <ellipse cx="17" cy="16" rx="4.5" ry="6" fill="#F7F3EA" opacity="0.5" />
+                <path d="M21 45 L23 49 L25 45 Z" fill="#8A4023" />
+                <path d="M23 49 C21.5 52 24.5 55 23 60" stroke="#96723F" strokeWidth="0.8" fill="none" />
+              </svg>
+            </motion.div>
 
-            {/* Le papier du mot */}
-            <div className="relative overflow-hidden border border-brass/25 bg-sable-50 px-6 pb-6 pt-8 shadow-[0_24px_60px_rgba(7,12,21,0.28)]">
+            {/* Le fil, du ballon au cachet */}
+            <div className="h-4 w-px bg-gradient-to-b from-brass-300/70 to-brass" aria-hidden="true" />
+
+            {/* Le mot, suspendu au fil — se balance comme un pendule */}
+            <motion.div
+              className="relative w-full origin-top"
+              animate={{ rotate: [-1.8, 1.8, -1.8] }}
+              transition={{ duration: 7.5, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
+            >
+              {/* Cachet de cire — le sceau qui noue le fil au mot */}
+              <div className="absolute -top-5 left-1/2 z-10 -translate-x-1/2">
+                <motion.div
+                  initial={{ scale: 0, rotate: -30 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ delay: 0.4, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-terracotta-300 shadow-[0_4px_12px_rgba(138,64,35,0.4)] ring-1 ring-terracotta-100/40"
+                >
+                  <Monogram className="h-6 w-6 text-sable/90" />
+                </motion.div>
+              </div>
+
+              {/* Le papier du mot */}
+              <div className="relative overflow-hidden border border-brass/25 bg-sable-50 px-6 pb-6 pt-8 shadow-[0_24px_60px_rgba(7,12,21,0.28)]">
               <button
                 type="button"
                 onClick={() => {
@@ -155,7 +176,8 @@ export function ReviewToast({
                 {current.name}
                 <span className="ml-2 text-terracotta-200">· {current.occasion}</span>
               </p>
-            </div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

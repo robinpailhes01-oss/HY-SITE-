@@ -12,6 +12,12 @@ const OCCASIONS = [
   "Autre",
 ];
 
+/* La page contact se joue au crépuscule : le formulaire est écrit pour le
+   fond sombre, pas décliné depuis une version claire. */
+const LABEL = "text-xs font-semibold uppercase tracking-[0.2em] text-sable/70";
+const FIELD =
+  "mt-2 w-full border border-sable/25 bg-sable/[0.04] px-4 py-3 text-sm text-sable placeholder:text-sable/45 transition-colors focus:border-brass focus:outline-none focus-visible:ring-2 focus-visible:ring-brass/40";
+
 export function ContactForm() {
   const [sent, setSent] = useState(false);
 
@@ -19,7 +25,7 @@ export function ContactForm() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const subject = encodeURIComponent(
-      `Demande de réservation — ${data.get("occasion") ?? "Harmonie Yacht"}`
+      `Message — ${data.get("occasion") ?? "Harmonie Yacht"}`
     );
     const body = encodeURIComponent(
       `Nom : ${data.get("name")}\nTéléphone : ${data.get("phone")}\nDate souhaitée : ${data.get("date")}\nOccasion : ${data.get("occasion")}\n\nMessage :\n${data.get("message")}`
@@ -30,13 +36,13 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="border border-brass/40 bg-sable-50 p-8 text-center">
-        <p className="font-serif text-xl text-marine">Merci !</p>
-        <p className="mt-3 text-sm leading-relaxed text-marine/70">
-          Votre messagerie s&apos;est ouverte avec votre demande pré-remplie
-          — il ne reste plus qu&apos;à l&apos;envoyer. Vous pouvez aussi nous
-          écrire directement à{" "}
-          <a href={`mailto:${CONTACT.email}`} className="text-brass-400 underline">
+      <div className="border border-brass/40 bg-sable/[0.05] p-8 text-center">
+        <p className="font-script text-3xl leading-none text-brass">Merci</p>
+        <p className="mt-4 text-sm leading-relaxed text-sable/75">
+          Votre messagerie s&apos;est ouverte avec le message déjà écrit — il ne
+          reste qu&apos;à l&apos;envoyer. Vous pouvez aussi nous écrire
+          directement à{" "}
+          <a href={`mailto:${CONTACT.email}`} className="text-brass underline">
             {CONTACT.email}
           </a>
           .
@@ -49,7 +55,7 @@ export function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
+          <label htmlFor="name" className={LABEL}>
             Nom
           </label>
           <input
@@ -57,12 +63,12 @@ export function ContactForm() {
             name="name"
             type="text"
             required
-            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine placeholder:text-marine/65 transition-colors focus:border-brass focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400/40"
+            className={FIELD}
             placeholder="Votre nom"
           />
         </div>
         <div>
-          <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
+          <label htmlFor="phone" className={LABEL}>
             Téléphone
           </label>
           <input
@@ -70,7 +76,7 @@ export function ContactForm() {
             name="phone"
             type="tel"
             required
-            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine placeholder:text-marine/65 transition-colors focus:border-brass focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400/40"
+            className={FIELD}
             placeholder="06 00 00 00 00"
           />
         </div>
@@ -78,7 +84,7 @@ export function ContactForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="occasion" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
+          <label htmlFor="occasion" className={LABEL}>
             Occasion
           </label>
           <select
@@ -86,7 +92,7 @@ export function ContactForm() {
             name="occasion"
             required
             defaultValue=""
-            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine transition-colors focus:border-brass focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400/40"
+            className={`${FIELD} [&>option]:bg-marine [&>option]:text-sable`}
           >
             <option value="" disabled>
               Choisissez une occasion
@@ -99,21 +105,23 @@ export function ContactForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="date" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
+          <label htmlFor="date" className={LABEL}>
             Date souhaitée{" "}
-            <span className="font-normal normal-case tracking-normal text-marine/65">(optionnel)</span>
+            <span className="font-normal normal-case tracking-normal text-sable/50">
+              (optionnel)
+            </span>
           </label>
           <input
             id="date"
             name="date"
             type="date"
-            className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine transition-colors focus:border-brass focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400/40"
+            className={`${FIELD} [color-scheme:dark]`}
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="message" className="text-xs font-semibold uppercase tracking-[0.2em] text-marine/65">
+        <label htmlFor="message" className={LABEL}>
           Message
         </label>
         <textarea
@@ -121,13 +129,13 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
-          className="mt-2 w-full border border-marine/20 bg-transparent px-4 py-3 text-sm text-marine placeholder:text-marine/40 focus:border-brass focus:outline-none"
+          className={FIELD}
           placeholder="Nombre de personnes, durée souhaitée, occasion..."
         />
       </div>
 
       <Button type="submit" variant="primary" className="w-full sm:w-auto">
-        Envoyer la demande
+        Envoyer le message
       </Button>
     </form>
   );

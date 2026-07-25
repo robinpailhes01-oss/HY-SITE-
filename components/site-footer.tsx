@@ -6,7 +6,9 @@ import { CONTACT, NAV_LINKS } from "@/lib/nav";
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden bg-marine text-sable">
+    // Le pied de page est le point le plus bas de l'arc : quelle que soit la
+    // page, la journée finit toujours au mouillage, dans la nuit.
+    <footer className="relative overflow-hidden bg-marine-400 text-sable">
       <p
         className="pointer-events-none select-none whitespace-nowrap px-2 pt-10 text-center font-serif text-[13.5vw] uppercase leading-none tracking-[0.06em] text-sable/[0.05] md:pt-14"
         aria-hidden="true"

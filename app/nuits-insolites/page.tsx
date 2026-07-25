@@ -25,7 +25,9 @@ export default function NuitsInsolitesPage() {
       <TimeIndicator />
 
       <PageHero
-        eyebrow="Nuit insolite · La traversée de nuit"
+        eyebrow="La nuit insolite"
+        time="18h00"
+        moment="heure-doree"
         title="Une nuit à deux, ancrés face à l'horizon."
         description="Du coucher de soleil au petit-déjeuner face à l'aube — voici, heure par heure, la nuit que vous allez vivre."
         image="/images/cabine-lit-nuit-insolite.jpg"
@@ -194,7 +196,7 @@ export default function NuitsInsolitesPage() {
         </section>
       </VoyageScroller>
 
-      <section className="bg-sable py-24 text-center md:py-32">
+      <section className="bg-sable-200 py-24 text-center md:py-32">
         <Reveal className="container flex flex-col items-center">
           <p className="font-script text-3xl text-brass-400 sm:text-4xl">
             Votre nuit vous attend

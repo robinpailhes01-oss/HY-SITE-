@@ -2,7 +2,9 @@ import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
 interface ChapterHeaderProps {
-  time: string;
+  /** Heure du journal de bord. Omise sur les pages qui ne sont pas un moment
+      de la journée (le bateau, les tarifs) — le filet prend alors toute la place. */
+  time?: string;
   chapter: string;
   title: string;
   tone?: "light" | "dark";
@@ -15,14 +17,16 @@ export function ChapterHeader({ time, chapter, title, tone = "light", className 
   return (
     <Reveal className={className}>
       <div className="flex items-baseline gap-4">
-        <span
-          className={cn(
-            "font-serif text-2xl italic tabular-nums md:text-3xl",
-            onDark ? "text-brass" : "text-brass-400"
-          )}
-        >
-          {time}
-        </span>
+        {time && (
+          <span
+            className={cn(
+              "font-serif text-2xl italic tabular-nums md:text-3xl",
+              onDark ? "text-brass" : "text-brass-400"
+            )}
+          >
+            {time}
+          </span>
+        )}
         <span
           className={cn(
             "h-px flex-1 max-w-24",

@@ -47,11 +47,13 @@ export function PageHero({
               du moment. C'est ce qui fait qu'on reste dans la même traversée. */}
           <div className="flex items-baseline gap-4">
             {time && (
-              <span className="font-serif text-xl italic tabular-nums text-brass md:text-2xl">
-                {time}
-              </span>
+              <>
+                <span className="font-serif text-xl italic tabular-nums text-brass md:text-2xl">
+                  {time}
+                </span>
+                <span className="h-px w-12 bg-sable/30" aria-hidden="true" />
+              </>
             )}
-            <span className="h-px w-12 bg-sable/30" aria-hidden="true" />
             <span className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sable/70 sm:text-xs">
               {eyebrow}
             </span>

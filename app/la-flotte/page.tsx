@@ -7,6 +7,8 @@ import { Reveal } from "@/components/motion/reveal";
 import { ImageReveal } from "@/components/motion/image-reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { Counter } from "@/components/motion/counter";
+import { Magnetic } from "@/components/motion/magnetic";
+import { ChapterHeader } from "@/components/voyage/chapter-header";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -37,9 +39,10 @@ export default function LaFlottePage() {
   return (
     <main>
       <PageHero
-        eyebrow="La flotte"
+        eyebrow="Le bateau"
+        moment="plein-jour"
         title="Un yacht, pensé pour recevoir."
-        description="Boiseries acajou, banquettes en cuir et pont spacieux : découvrez les aménagements du yacht Harmonie."
+        description="Onze mètres, douze invités, et tout ce qu'il faut à bord pour ne penser à rien. Voici le bateau sur lequel vous allez monter."
         image="/images/exterieur-coucher-soleil.jpg"
         imageAlt="Vue extérieure du yacht Harmonie Yacht naviguant au coucher du soleil"
       />
@@ -123,24 +126,36 @@ export default function LaFlottePage() {
         </section>
       </WakeScrollSection>
 
-      <section className="bg-sable py-24 md:py-32">
+      <section className="bg-marine-400 py-24 text-sable md:py-32">
         <Reveal className="container">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass-400">
-            Équipements
-          </p>
-          <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">
-            Tout est prévu à bord.
-          </h2>
-          <ul className="mt-12 grid gap-x-10 gap-y-4 text-base leading-relaxed text-marine/75 sm:grid-cols-2">
+          <ChapterHeader
+            chapter="Équipements"
+            title="Tout est prévu à bord."
+            tone="dark"
+          />
+          <ul className="mt-12 grid gap-x-10 gap-y-4 text-base leading-relaxed text-sable/80 sm:grid-cols-2">
             {EQUIPMENT.map((item) => (
-              <li key={item} className="border-b border-marine/10 pb-4">
+              <li key={item} className="border-b border-sable/15 pb-4">
                 {item}
               </li>
             ))}
           </ul>
-          <Button href="/contact" variant="primary" className="mt-12">
-            Poser une question
-          </Button>
+          <div className="mt-14 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <Magnetic>
+              <Button href="/reserver" variant="primary">
+                Réserver ce bateau
+              </Button>
+            </Magnetic>
+            <Magnetic>
+              <Button
+                href="/contact"
+                variant="outline"
+                className="border-sable/40 text-sable hover:bg-sable/10"
+              >
+                Poser une question
+              </Button>
+            </Magnetic>
+          </div>
         </Reveal>
       </section>
     </main>

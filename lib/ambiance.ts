@@ -70,7 +70,7 @@ export const AMBIANCE: Record<Moment, MomentTokens> = {
     surface: "bg-sable",
     surfaceLine: "border-marine/10",
     // Photo de petit matin : on éclaircit à peine, la lumière fait le travail.
-    heroOverlay: "bg-gradient-to-t from-marine-400/85 via-marine-300/25 to-marine-400/5",
+    heroOverlay: "bg-gradient-to-t from-marine-400/92 via-marine-400/45 to-marine-400/10",
   },
   "plein-jour": {
     hex: "#F7F3EA",
@@ -85,7 +85,7 @@ export const AMBIANCE: Record<Moment, MomentTokens> = {
     line: "border-marine/10",
     surface: "bg-sable-50",
     surfaceLine: "border-marine/10",
-    heroOverlay: "bg-gradient-to-t from-marine-400/85 via-marine-300/30 to-marine-400/10",
+    heroOverlay: "bg-gradient-to-t from-marine-400/92 via-marine-400/48 to-marine-400/12",
   },
   "heure-doree": {
     hex: "#1C2C46",
@@ -102,7 +102,7 @@ export const AMBIANCE: Record<Moment, MomentTokens> = {
     surfaceLine: "border-sable/12",
     // Le seul moment où la terracotta entre dans le voile : le ciel s'embrase.
     heroOverlay:
-      "bg-gradient-to-t from-marine-400/90 via-terracotta-300/20 to-marine-400/10",
+      "bg-gradient-to-t from-marine-400/94 via-terracotta-300/35 to-marine-400/15",
   },
   crepuscule: {
     hex: "#101B2E",
@@ -117,7 +117,7 @@ export const AMBIANCE: Record<Moment, MomentTokens> = {
     line: "border-sable/15",
     surface: "bg-sable/[0.05]",
     surfaceLine: "border-sable/12",
-    heroOverlay: "bg-gradient-to-t from-marine-400/92 via-marine-400/45 to-marine-400/15",
+    heroOverlay: "bg-gradient-to-t from-marine-400/95 via-marine-400/60 to-marine-400/20",
   },
   nuit: {
     hex: "#070C15",
@@ -132,7 +132,7 @@ export const AMBIANCE: Record<Moment, MomentTokens> = {
     line: "border-sable/12",
     surface: "bg-sable/[0.04]",
     surfaceLine: "border-sable/10",
-    heroOverlay: "bg-gradient-to-t from-marine-400/95 via-marine-400/60 to-marine-400/25",
+    heroOverlay: "bg-gradient-to-t from-marine-400/96 via-marine-400/72 to-marine-400/35",
   },
 };
 

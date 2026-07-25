@@ -40,6 +40,13 @@ export function PageHero({
         />
       </Parallax>
       <div className={`absolute inset-0 ${ambiance.heroOverlay}`} />
+      {/* Le voile d'ambiance donne le ton ; celui-ci garantit la lisibilité.
+          Ancré sous le bloc de texte, et plus haut sur mobile où le cadrage
+          serré fait remonter de l'eau claire derrière le titre. */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-marine-400/85 via-marine-400/50 to-transparent md:h-1/2 md:from-marine-400/75 md:via-marine-400/30"
+        aria-hidden="true"
+      />
 
       <HeroContent className="container relative z-10 pb-16 pt-40 md:pb-24">
         <HeroItem>

@@ -167,24 +167,6 @@ html.lenis body {
   scroll-behavior: auto !important;
 }
 
-.marquee-outline {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(16, 27, 46, 0.35);
-}
-
-.marquee-track {
-  animation: marquee-scroll 45s linear infinite;
-}
-
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 /* Grain photographique : matière subtile sur les aplats numériques */
 .grain-overlay {
   position: fixed;
@@ -235,9 +217,6 @@ html.lenis body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
   .star-twinkle {
     animation: none;
     opacity: 0.5;

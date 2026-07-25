@@ -30,8 +30,8 @@ export default function NuitsInsolitesPage() {
         moment="heure-doree"
         title="Une nuit à deux, ancrés face à l'horizon."
         description="Du coucher de soleil au petit-déjeuner face à l'aube — voici, heure par heure, la nuit que vous allez vivre."
-        image="/images/cabine-lit-nuit-insolite.jpg"
-        imageAlt="Cabine principale du yacht avec lit rond et boiseries chaleureuses, préparée pour une nuit insolite"
+        image="/images/exterieur-coucher-soleil.jpg"
+        imageAlt="Le yacht Harmonie Yacht au mouillage au large de Carnon, au coucher du soleil"
       />
 
       <ExperienceFacts

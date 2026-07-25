@@ -164,25 +164,41 @@ export function VoyageSun() {
   return (
     <div
       ref={discRef}
-      className="pointer-events-none fixed right-[5vw] top-[16vh] z-[5] mix-blend-screen md:right-[8vw]"
+      // Masqué en portrait : un astre fixe sur 390 px de large finit toujours
+      // par croiser un paragraphe. L'arc de couleur du fond porte déjà le
+      // passage du jour à la nuit sur mobile.
+      className="pointer-events-none fixed right-[9vw] top-[14vh] z-[5] hidden md:block"
       aria-hidden="true"
     >
-      <div
-        ref={sunRef}
-        className="h-24 w-24 rounded-full md:h-36 md:w-36"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(242,200,121,0.95) 0%, rgba(230,160,90,0.55) 38%, rgba(230,160,90,0) 70%)",
-        }}
-      />
-      <div
-        ref={moonRef}
-        className="absolute inset-0 h-24 w-24 rounded-full md:h-36 md:w-36"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(232,236,242,0.9) 0%, rgba(200,210,230,0.4) 40%, rgba(200,210,230,0) 68%)",
-        }}
-      />
+      {/* Un disque franc, pas une tache : le dégradé s'arrête net au bord et
+          le halo vit à l'extérieur, sinon l'astre lit comme une salissure
+          d'objectif au lieu d'un soleil. */}
+      <div ref={sunRef} className="relative h-20 w-20 md:h-28 md:w-28">
+        <div
+          className="absolute -inset-[55%] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(242,200,121,0.35) 0%, rgba(230,160,90,0) 65%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 rounded-full"
+          style={{ background: "radial-gradient(circle, #FBEBC4 0%, #F0B968 78%, #E9A65A 100%)" }}
+        />
+      </div>
+      <div ref={moonRef} className="absolute inset-0 h-20 w-20 md:h-28 md:w-28">
+        <div
+          className="absolute -inset-[45%] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(226,232,242,0.28) 0%, rgba(200,210,230,0) 65%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 rounded-full"
+          style={{ background: "radial-gradient(circle, #F4F6FA 0%, #DDE3EE 80%, #C9D2E2 100%)" }}
+        />
+      </div>
     </div>
   );
 }

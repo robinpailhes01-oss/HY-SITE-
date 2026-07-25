@@ -47,6 +47,11 @@ export function PageHero({
         className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-marine-400/85 via-marine-400/50 to-transparent md:h-1/2 md:from-marine-400/75 md:via-marine-400/30"
         aria-hidden="true"
       />
+      {/* Même raison en tête de page : la barre de navigation passe dessus. */}
+      <div
+        className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-marine-400/55 to-transparent md:h-36"
+        aria-hidden="true"
+      />
 
       <HeroContent className="container relative z-10 pb-16 pt-40 md:pb-24">
         <HeroItem>

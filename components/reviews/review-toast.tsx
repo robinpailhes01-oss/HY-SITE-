@@ -87,34 +87,47 @@ export function ReviewToast({
             }}
             className="pointer-events-auto flex w-full max-w-[340px] flex-col items-center"
           >
-            {/* Le ballon qui tire le mot vers le haut */}
+            {/* La bouée de sauvetage qui tient le mot à la surface */}
             <motion.div
-              initial={{ scale: 0, y: 10 }}
-              animate={{ scale: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+              initial={{ scale: 0, rotate: -25 }}
+              animate={{ scale: 1, rotate: [-6, 6, -6] }}
+              transition={{
+                scale: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] },
+                rotate: { duration: 8, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" },
+              }}
               aria-hidden="true"
             >
-              <svg width="46" height="60" viewBox="0 0 46 60" fill="none">
-                <defs>
-                  <radialGradient id="hy-balloon" cx="38%" cy="32%" r="70%">
-                    <stop offset="0%" stopColor="#EFDFC4" />
-                    <stop offset="45%" stopColor="#DCC091" />
-                    <stop offset="100%" stopColor="#B3562F" />
-                  </radialGradient>
-                </defs>
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                {/* Corps de la bouée */}
+                <circle cx="26" cy="26" r="21" fill="#FDFCF9" stroke="#96723F" strokeWidth="0.8" />
+                {/* Quartiers terracotta */}
                 <path
-                  d="M23 3 C33 3 40 11 40 22 C40 33 31 41 24 45 L22 45 C15 41 6 33 6 22 C6 11 13 3 23 3 Z"
-                  fill="url(#hy-balloon)"
-                  stroke="#96723F"
-                  strokeWidth="0.6"
+                  d="M26 5 A21 21 0 0 1 47 26 L36 26 A10 10 0 0 0 26 16 Z"
+                  fill="#B3562F"
                 />
-                <ellipse cx="17" cy="16" rx="4.5" ry="6" fill="#F7F3EA" opacity="0.5" />
-                <path d="M21 45 L23 49 L25 45 Z" fill="#8A4023" />
-                <path d="M23 49 C21.5 52 24.5 55 23 60" stroke="#96723F" strokeWidth="0.8" fill="none" />
+                <path
+                  d="M26 47 A21 21 0 0 1 5 26 L16 26 A10 10 0 0 0 26 36 Z"
+                  fill="#B3562F"
+                />
+                {/* Trou central */}
+                <circle cx="26" cy="26" r="10" fill="#F7F3EA" stroke="#96723F" strokeWidth="0.7" />
+                {/* Cordage */}
+                <circle
+                  cx="26"
+                  cy="26"
+                  r="16"
+                  fill="none"
+                  stroke="#B8935A"
+                  strokeWidth="0.9"
+                  strokeDasharray="2.5 3.5"
+                  opacity="0.85"
+                />
+                {/* Reflet */}
+                <ellipse cx="16" cy="15" rx="4" ry="2.5" fill="#FFFFFF" opacity="0.55" transform="rotate(-35 16 15)" />
               </svg>
             </motion.div>
 
-            {/* Le fil, du ballon au cachet */}
+            {/* Le cordage, de la bouée au cachet */}
             <div className="h-4 w-px bg-gradient-to-b from-brass-300/70 to-brass" aria-hidden="true" />
 
             {/* Le mot, suspendu au fil — se balance comme un pendule */}

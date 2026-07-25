@@ -47,7 +47,8 @@ export default function NuitsInsolitesPage() {
           data-voyage-bg="#EFE7D4"
           data-log-time="18h00"
           data-log-label="L'embarquement"
-          className="py-24 md:py-32"
+          data-snap
+          className="flex min-h-[100svh] items-center py-24 md:py-28"
         >
           <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
             <div>
@@ -82,7 +83,8 @@ export default function NuitsInsolitesPage() {
           data-voyage-bg="#8A4023"
           data-log-time="19h30"
           data-log-label="Coucher de soleil & tapas"
-          className="py-24 text-sable md:py-32"
+          data-snap
+          className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
           <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
             <ImageReveal className="relative aspect-[4/5] w-full overflow-hidden md:order-2">
@@ -118,7 +120,8 @@ export default function NuitsInsolitesPage() {
           data-voyage-bg="#070C15"
           data-log-time="22h30"
           data-log-label="La nuit sur l'eau"
-          className="relative py-24 text-sable md:py-36"
+          data-snap
+          className="relative flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
           <Stars />
           <div className="container relative grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
@@ -159,7 +162,8 @@ export default function NuitsInsolitesPage() {
           data-voyage-bg="#F2E4D4"
           data-log-time="08h00"
           data-log-label="Le réveil face à l'aube"
-          className="py-24 md:py-32"
+          data-snap
+          className="flex min-h-[100svh] items-center py-24 md:py-28"
         >
           <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
             <ImageReveal className="relative aspect-[4/5] w-full overflow-hidden md:order-2">

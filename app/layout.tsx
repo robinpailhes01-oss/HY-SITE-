@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteCursor } from "@/components/cursor/site-cursor";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
+import { SnapSections } from "@/components/providers/snap-sections";
 import { Preloader } from "@/components/preloader";
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
 
@@ -89,6 +90,7 @@ export default function RootLayout({
         <MotionConfig reducedMotion="user">
           <Preloader />
           <SmoothScroll />
+          <SnapSections />
           <SiteCursor />
           <SiteHeader />
           {children}

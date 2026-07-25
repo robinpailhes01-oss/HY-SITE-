@@ -5,6 +5,12 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+declare global {
+  interface Window {
+    __hyLenis?: Lenis;
+  }
+}
+
 export function SmoothScroll() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -15,6 +21,7 @@ export function SmoothScroll() {
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
+    window.__hyLenis = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -27,6 +34,7 @@ export function SmoothScroll() {
     return () => {
       gsap.ticker.remove(raf);
       lenis.destroy();
+      delete window.__hyLenis;
     };
   }, []);
 

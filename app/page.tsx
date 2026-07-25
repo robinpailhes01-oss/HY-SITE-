@@ -121,7 +121,7 @@ export default function HomePage() {
           <HeroItem className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Magnetic>
               <Button href="/sorties" variant="primary">
-                Réserver une sortie
+                Découvrir les sorties
               </Button>
             </Magnetic>
             <Magnetic>
@@ -130,7 +130,7 @@ export default function HomePage() {
                 variant="outline"
                 className="text-sable border-sable/60 hover:bg-sable/10"
               >
-                Une nuit insolite
+                Découvrir la nuit insolite
               </Button>
             </Magnetic>
           </HeroItem>

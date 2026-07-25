@@ -152,7 +152,8 @@ export default function SortiesPage() {
           data-voyage-bg="#F7F3EA"
           data-log-time="14h00"
           data-log-label="L'embarquement"
-          className="py-24 md:py-32"
+          data-snap
+          className="flex min-h-[100svh] items-center py-24 md:py-28"
         >
           <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
             <div>
@@ -186,7 +187,8 @@ export default function SortiesPage() {
           data-voyage-bg="#1C2C46"
           data-log-time="15h00"
           data-log-label="Baignade au large"
-          className="py-24 text-sable md:py-32"
+          data-snap
+          className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
           <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
             <ImageReveal className="relative aspect-[4/5] w-full overflow-hidden md:order-2">
@@ -221,7 +223,8 @@ export default function SortiesPage() {
           data-voyage-bg="#8A4023"
           data-log-time="17h30"
           data-log-label="L'apéritif au soleil"
-          className="py-24 text-sable md:py-32"
+          data-snap
+          className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
           <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
             <div>
@@ -256,7 +259,8 @@ export default function SortiesPage() {
           data-voyage-bg="#101B2E"
           data-log-time="19h00"
           data-log-label="Le retour au couchant"
-          className="py-24 text-sable md:py-32"
+          data-snap
+          className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
           <div className="container grid gap-12 md:grid-cols-2 md:items-center md:gap-20">
             <ImageReveal className="relative aspect-[4/5] w-full overflow-hidden md:order-2">

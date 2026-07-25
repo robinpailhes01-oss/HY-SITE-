@@ -85,7 +85,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${fraunces.variable} ${manrope.variable} ${beauRivage.variable} font-sans antialiased bg-sable text-marine`}
+        className={`${fraunces.variable} ${manrope.variable} ${beauRivage.variable} font-sans antialiased bg-[color:var(--amb-page)] text-[color:var(--amb-ink)]`}
       >
         <MotionConfig reducedMotion="user">
           <Preloader />

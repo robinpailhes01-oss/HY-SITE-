@@ -55,19 +55,19 @@ export function Calendar({
           onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() - 1, 1))}
           disabled={isCurrentMonth}
           aria-label="Mois précédent"
-          className="flex h-10 w-10 items-center justify-center text-marine/70 transition-colors hover:text-brass-400 disabled:opacity-25 disabled:hover:text-marine/70"
+          className="flex h-10 w-10 items-center justify-center text-[color:var(--amb-ink-soft)] transition-colors hover:text-[color:var(--amb-accent)] disabled:opacity-25"
         >
           <ChevronLeft size={20} />
         </button>
-        <p className="font-serif text-lg text-marine">
+        <p className="font-serif text-lg text-[color:var(--amb-ink)]">
           {MONTHS[month.getMonth()]}{" "}
-          <span className="text-marine/60">{month.getFullYear()}</span>
+          <span className="text-[color:var(--amb-ink-soft)]">{month.getFullYear()}</span>
         </p>
         <button
           type="button"
           onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() + 1, 1))}
           aria-label="Mois suivant"
-          className="flex h-10 w-10 items-center justify-center text-marine/70 transition-colors hover:text-brass-400"
+          className="flex h-10 w-10 items-center justify-center text-[color:var(--amb-ink-soft)] transition-colors hover:text-[color:var(--amb-accent)]"
         >
           <ChevronRight size={20} />
         </button>
@@ -77,7 +77,7 @@ export function Calendar({
         {DAYS.map((day) => (
           <span
             key={day}
-            className="pb-2 text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-marine/55"
+            className="pb-2 text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[color:var(--amb-ink-faint)]"
           >
             {day}
           </span>
@@ -97,8 +97,8 @@ export function Calendar({
               aria-pressed={isSelected}
               className={cn(
                 "mx-auto flex h-10 w-10 items-center justify-center rounded-full font-serif text-sm tabular-nums transition-colors",
-                isPast && "text-marine/25",
-                !isPast && !isSelected && "text-marine hover:bg-brass/15",
+                isPast && "text-[color:var(--amb-ink-faint)] opacity-40",
+                !isPast && !isSelected && "text-[color:var(--amb-ink)] hover:bg-brass/20",
                 isToday && !isSelected && "border border-brass/50",
                 isSelected && "bg-brass text-marine-300"
               )}

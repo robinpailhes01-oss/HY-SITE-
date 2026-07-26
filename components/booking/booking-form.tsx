@@ -27,7 +27,7 @@ const FORMULES: Record<Experience, Formule[]> = {
     { id: "apres-midi", name: "Après-midi", duration: "4 heures", price: "Dès 590 €" },
     { id: "journee", name: "Journée", duration: "8 heures", price: "Dès 990 €" },
   ],
-  nuit: [{ id: "nuit-insolite", name: "Nuit insolite", duration: "18h00 → 10h00", price: "Dès 450 €" }],
+  nuit: [{ id: "nuit-insolite", name: "Nuit insolite", duration: "18h00 → 10h00", price: "Dès 350 €" }],
 };
 
 const STEPS = ["Votre envie", "Votre moment", "Votre date", "Faisons connaissance"];
@@ -235,7 +235,7 @@ export function BookingForm({
                       icon: Moon,
                       title: "Nuit insolite",
                       text: "À deux, du coucher de soleil au petit-déjeuner.",
-                      price: "Dès 450 €",
+                      price: "Dès 350 €",
                     },
                   ]
                 ).map(({ id, icon: Icon, title, text, price }) => {

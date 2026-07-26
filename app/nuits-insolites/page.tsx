@@ -35,7 +35,7 @@ export default function NuitsInsolitesPage() {
         facts={[
           { label: "Horaires", value: "18h00 → 10h00" },
           { label: "Équipage", value: "2 personnes" },
-          { label: "Tarif", value: "Dès 450 €" },
+          { label: "Tarif", value: "Dès 350 €" },
           { label: "Départ", value: "Port de Carnon" },
         ]}
       />
@@ -203,7 +203,7 @@ export default function NuitsInsolitesPage() {
             </Button>
           </Magnetic>
           <p className="mt-4 text-[0.7rem] uppercase tracking-[0.2em] text-marine/50">
-            Dès 450 € · Report gratuit en cas de météo défavorable
+            Dès 350 € · Report gratuit en cas de météo défavorable
           </p>
         </Reveal>
       </section>

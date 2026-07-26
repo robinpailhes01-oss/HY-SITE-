@@ -211,17 +211,18 @@ export default function TarifsPage() {
               </p>
 
               <div className="mt-10 flex items-baseline gap-5">
-                <span className="font-serif text-5xl text-brass md:text-6xl">450 €</span>
+                <span className="font-serif text-5xl text-brass md:text-6xl">350 €</span>
                 <span className="text-xs uppercase tracking-[0.2em] text-sable/60">
-                  la nuit · pour deux
+                  la nuit · pour deux · tout compris
                 </span>
               </div>
 
               <ul className="mt-8 space-y-3 text-sm leading-relaxed text-sable/80">
                 {[
+                  "Sortie en mer et coucher de soleil compris",
+                  "Tapas de notre partenaire à l'ancre",
                   "Mouillage privé au large de Carnon",
                   "Cabine préparée, literie et linge de bain fournis",
-                  "Sortie coucher de soleil comprise",
                   "Plateau de petit-déjeuner servi à bord",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">

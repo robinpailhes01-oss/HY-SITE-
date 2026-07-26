@@ -46,7 +46,7 @@ export default function GaleriePage() {
         eyebrow="Le journal"
         moment="crepuscule"
         title="La mer, vue depuis le pont."
-        description="Des instants pris à bord, sans mise en scène — la lumière de fin de journée, les rires au mouillage, le calme de la cabine."
+        description="Des instants pris à bord, sans mise en scène."
         image="/images/sortie-groupe-jour.jpg"
         imageAlt="Groupe d'amis profitant du ponton gonflable à l'arrière du yacht"
       />

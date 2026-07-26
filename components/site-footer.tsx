@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { InstagramIcon } from "@/components/icons/instagram";
 import { Monogram } from "@/components/monogram";
-import { CONTACT, NAV_LINKS } from "@/lib/nav";
+import { CONTACT, LEGAL_LINKS, NAV_LINKS } from "@/lib/nav";
 
 export function SiteFooter() {
   return (
@@ -72,8 +72,17 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col-reverse items-center justify-between gap-4 border-t border-sable/10 pt-8 text-xs text-sable/50 md:flex-row">
+        <div className="mt-16 flex flex-col gap-6 border-t border-sable/10 pt-8 text-xs text-sable/50 md:flex-row md:items-center md:justify-between">
           <p>&copy; {new Date().getFullYear()} Harmonie Yacht. Tous droits réservés.</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {LEGAL_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="transition-colors hover:text-brass">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <p>Carnon-Plage · Montpellier</p>
         </div>
       </div>

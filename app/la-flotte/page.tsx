@@ -42,7 +42,7 @@ export default function LaFlottePage() {
         eyebrow="Le bateau"
         moment="plein-jour"
         title="Un yacht, pensé pour recevoir."
-        description="Onze mètres, douze invités, et tout ce qu'il faut à bord pour ne penser à rien. Voici le bateau sur lequel vous allez monter."
+        description="Onze mètres, douze invités, et tout ce qu'il faut à bord pour ne penser à rien."
         image="/images/exterieur-coucher-soleil.jpg"
         imageAlt="Vue extérieure du yacht Harmonie Yacht naviguant au coucher du soleil"
       />

@@ -15,6 +15,7 @@ export const metadata = pageMetadata({
   description:
     "Tarifs des sorties en mer et nuits insolites Harmonie Yacht au départ de Carnon : coucher de soleil, après-midi, journée, nuit à bord. Capitaine et carburant inclus.",
   path: "/tarifs",
+  image: "/images/exterieur-coucher-soleil.jpg",
 });
 
 interface Journee {
@@ -94,7 +95,7 @@ export default function TarifsPage() {
         eyebrow="Le carnet de bord"
         moment="plein-jour"
         title="Ce que coûte une traversée."
-        description="Trois façons de passer la journée en mer, et une de ne pas rentrer. Tout est dit ici — le reste se discute de vive voix."
+        description="Trois façons de passer la journée en mer, et une de ne pas rentrer."
         image="/images/exterieur-coucher-soleil.jpg"
         imageAlt="Yacht Harmonie Yacht au coucher du soleil au large de Carnon"
       />

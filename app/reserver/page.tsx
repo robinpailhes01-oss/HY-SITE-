@@ -6,6 +6,7 @@ export const metadata = pageMetadata({
   description:
     "Réservez votre sortie en mer ou votre nuit insolite à bord en quelques étapes : choisissez votre expérience, votre formule, votre date — nous confirmons sous 24h.",
   path: "/reserver",
+  image: "/images/exterieur-coucher-soleil.jpg",
 });
 
 export default function ReserverPage() {

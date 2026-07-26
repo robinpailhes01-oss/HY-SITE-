@@ -54,7 +54,7 @@ export default function SortiesPage() {
         time="14h00"
         moment="plein-jour"
         title="Votre journée, votre mer, votre rythme."
-        description="De l'embarquement au retour dans le soleil couchant — voici, heure par heure, la journée que vous allez vivre."
+        description="Heure par heure, la journée que vous allez vivre."
         image="/images/sortie-groupe-jour.jpg"
         imageAlt="Groupe d'amis profitant du ponton gonflable à l'arrière du yacht par une journée ensoleillée"
       />

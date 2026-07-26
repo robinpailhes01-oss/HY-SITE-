@@ -51,7 +51,7 @@ const EXPERIENCES = [
     number: "01",
     title: "EVJF & anniversaires",
     description:
-      "Votre musique, le ponton de bain sorti, la baignade au large — et personne d'autre à bord que vous.",
+      "Votre musique, la baignade au large, et personne d'autre à bord que vous.",
     price: "Dès 390 €",
     image: "/images/sortie-groupe-jour.jpg",
     imageAlt: "Groupe d'amis au ponton de bain du yacht par une journée ensoleillée",
@@ -62,7 +62,7 @@ const EXPERIENCES = [
     number: "02",
     title: "Entreprise",
     description:
-      "Séminaire, incentive ou réception client : un cadre dont on reparle, et une facturation entreprise.",
+      "Séminaire ou réception client : un cadre dont on reparle, facturé à l'entreprise.",
     price: "Devis sous 24h",
     image: "/images/exterieur-coucher-soleil.jpg",
     imageAlt: "Le yacht Harmonie Yacht naviguant au large au coucher du soleil",
@@ -150,11 +150,6 @@ export default function HomePage() {
                 Voir le déroulé
               </Button>
             </Magnetic>
-          </HeroItem>
-          <HeroItem>
-            <p className="mt-5 text-[0.7rem] uppercase tracking-[0.2em] text-sable/70">
-              Dès 390 € · Capitaine &amp; carburant inclus · Report gratuit si la météo tourne
-            </p>
           </HeroItem>
         </HeroContent>
 
@@ -296,9 +291,8 @@ export default function HomePage() {
               />
               <Reveal delay={0.1}>
                 <p className="mt-6 max-w-md text-base leading-relaxed text-sable/80">
-                  Boiseries acajou, banquettes en cuir, la table dressée au
-                  mouillage pendant que le ciel s&apos;embrase. Jusqu&apos;à
-                  douze à bord, et personne d&apos;autre autour.
+                  La table dressée au mouillage pendant que le ciel
+                  s&apos;embrase. Douze à bord, et personne d&apos;autre autour.
                 </p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
                   <Magnetic>
@@ -337,8 +331,8 @@ export default function HomePage() {
                   contre la coque — et un réveil face à l&apos;horizon.
                 </p>
                 <p className="mt-5 max-w-md text-sm leading-relaxed text-sable/70">
-                  Une cabine préparée pour deux, un mouillage privé au large de
-                  Carnon, et le petit-déjeuner servi à bord au lever du soleil.
+                  Une cabine pour deux, un mouillage privé, et le petit-déjeuner
+                  servi à bord au lever du soleil.
                 </p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
                   <Magnetic>

@@ -13,6 +13,7 @@ export const metadata = pageMetadata({
   description:
     "Une question sur une sortie en mer ou une nuit insolite à Carnon ? Écrivez à Harmonie Yacht, nous répondons nous-mêmes sous 24h.",
   path: "/contact",
+  image: "/images/hero-sillage-coucher-soleil.jpg",
 });
 
 export default function ContactPage() {
@@ -23,7 +24,7 @@ export default function ContactPage() {
         time="20h30"
         moment="heure-doree"
         title="Parlons de votre moment en mer."
-        description="Une question, un doute sur une date, un groupe compliqué à organiser : écrivez-nous. C'est nous qui lisons, et nous qui répondons."
+        description="Écrivez-nous : c'est nous qui lisons, et nous qui répondons."
         image="/images/hero-sillage-coucher-soleil.jpg"
         imageAlt="Sillage doré au coucher du soleil vu depuis le pont arrière du yacht"
       />

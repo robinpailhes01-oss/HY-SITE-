@@ -23,5 +23,7 @@ export const CONTACT = {
   whatsappHref: "https://wa.me/33600000000",
   email: "contact@harmonie-yacht.fr",
   instagram: "@harmonieyacht",
+  instagramHref: "https://www.instagram.com/harmonieyacht/",
+  googleReviewsHref: "https://share.google/3v46qPj5J2gL9OuXA",
   location: "Port de Carnon, 34280 Carnon-Plage",
 } as const;

@@ -63,7 +63,17 @@ export default function ContactPage() {
             <ul className="mt-10 space-y-6 text-base text-sable/85">
               <li className="flex items-start gap-3">
                 <MapPin size={20} className="mt-0.5 shrink-0 text-brass" />
-                <span>{CONTACT.location}</span>
+                <span>
+                  {CONTACT.location}
+                  <a
+                    href={CONTACT.googleReviewsHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-2 whitespace-nowrap text-sm text-brass underline underline-offset-2 transition-colors hover:text-brass-400"
+                  >
+                    voir sur Google
+                  </a>
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={20} className="shrink-0 text-brass" />
@@ -79,7 +89,14 @@ export default function ContactPage() {
               </li>
               <li className="flex items-center gap-3">
                 <InstagramIcon size={20} className="shrink-0 text-brass" />
-                <span>{CONTACT.instagram}</span>
+                <a
+                  href={CONTACT.instagramHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-brass"
+                >
+                  {CONTACT.instagram}
+                </a>
               </li>
             </ul>
 

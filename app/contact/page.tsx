@@ -21,7 +21,6 @@ export default function ContactPage() {
     <main>
       <PageHero
         eyebrow="Avant de partir"
-        time="20h30"
         moment="heure-doree"
         title="Parlons de votre moment en mer."
         description="Écrivez-nous : c'est nous qui lisons, et nous qui répondons."
@@ -56,7 +55,6 @@ export default function ContactPage() {
         <div className="container grid gap-16 md:grid-cols-[0.9fr_1.1fr] md:gap-20">
           <Reveal>
             <ChapterHeader
-              time="22h00"
               chapter="Nos coordonnées"
               title="Rendez-vous au port de Carnon."
               tone="dark"

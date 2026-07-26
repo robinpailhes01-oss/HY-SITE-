@@ -8,7 +8,6 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { VoyageScroller } from "@/components/voyage/voyage-scroller";
 import { ChapterHeader } from "@/components/voyage/chapter-header";
-import { TimeIndicator } from "@/components/experience/time-indicator";
 import { ExperienceFacts } from "@/components/experience/experience-facts";
 import { pageMetadata } from "@/lib/seo";
 
@@ -47,8 +46,6 @@ const OCCASIONS = [
 export default function SortiesPage() {
   return (
     <main>
-      <TimeIndicator />
-
       <PageHero
         eyebrow="La sortie en mer"
         time="14h00"
@@ -152,8 +149,6 @@ export default function SortiesPage() {
         {/* 14h00 — L'embarquement */}
         <section
           data-voyage-bg="#F7F3EA"
-          data-log-time="14h00"
-          data-log-label="L'embarquement"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28"
         >
@@ -187,8 +182,6 @@ export default function SortiesPage() {
         {/* 15h00 — Le grand bleu */}
         <section
           data-voyage-bg="#1C2C46"
-          data-log-time="15h00"
-          data-log-label="Baignade au large"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
@@ -223,8 +216,6 @@ export default function SortiesPage() {
         {/* 17h30 — L'apéritif */}
         <section
           data-voyage-bg="#8A4023"
-          data-log-time="17h30"
-          data-log-label="L'apéritif au soleil"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
@@ -259,8 +250,6 @@ export default function SortiesPage() {
         {/* 19h00 — Le retour au couchant */}
         <section
           data-voyage-bg="#101B2E"
-          data-log-time="19h00"
-          data-log-label="Le retour au couchant"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
@@ -296,7 +285,6 @@ export default function SortiesPage() {
       <section className="bg-marine py-24 text-sable md:py-32">
         <div className="container">
           <ChapterHeader
-            time="20h00"
             chapter="Pour chaque occasion"
             title="Trois façons de vivre cette journée."
             tone="dark"

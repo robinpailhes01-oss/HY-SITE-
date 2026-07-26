@@ -13,9 +13,9 @@ import { PinnedHorizontal } from "@/components/motion/pinned-horizontal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { TraverseeChooser } from "@/components/experience/traversee-chooser";
 import { VoyageScroller } from "@/components/voyage/voyage-scroller";
-import { VoyageSun } from "@/components/voyage/voyage-sun";
 import { ChapterHeader } from "@/components/voyage/chapter-header";
 import { Stars } from "@/components/voyage/stars";
+import { BoatTour } from "@/components/boat-tour";
 import { StickyCta } from "@/components/sticky-cta";
 import { HeroVideo } from "@/components/hero-video";
 import { ReviewsSection } from "@/components/reviews/reviews-section";
@@ -165,8 +165,7 @@ export default function HomePage() {
       {/* ── 2. La bifurcation : jour ou nuit ─────────────────────────── */}
       <TraverseeChooser />
 
-      {/* ── La traversée : le fond vit du jour à la nuit ─────────────── */}
-      <VoyageSun />
+      {/* ── Une seule bascule de lumière : le jour, puis la nuit ─────── */}
       <VoyageScroller>
         {/* 3. 14h00 — L'embarquement */}
         <section
@@ -176,8 +175,7 @@ export default function HomePage() {
         >
           <div className="container">
             <ChapterHeader
-              time="14h00"
-              chapter="L'embarquement"
+              chapter="Comment ça se passe"
               title="Trois gestes, et vous êtes en mer."
             />
 
@@ -210,15 +208,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4·5·6. 15h30 — Le grand bleu : une occasion par écran en portrait,
-            une piste horizontale épinglée sur desktop. */}
-        <section data-voyage-bg="#1C2C46" className="py-24 text-sable md:py-28">
+        {/* 4. Le bateau — la question que se pose vraiment un client qui hésite. */}
+        <BoatTour />
+
+        {/* 5·6·7. Une occasion par écran en portrait, une piste horizontale
+            épinglée sur desktop. */}
+        <section data-voyage-bg="#F7F3EA" className="py-24 md:py-28">
           <div className="container">
             <ChapterHeader
-              time="15h30"
-              chapter="Le grand bleu"
+              chapter="Pour quelle occasion"
               title="Votre moment, votre équipage."
-              tone="dark"
             />
           </div>
 
@@ -268,7 +267,7 @@ export default function HomePage() {
         {/* 7. 20h30 — L'heure d'or. Une photo, une phrase, une action : c'est ce
             qui remplace l'ancienne section décorative « L'évasion ». */}
         <section
-          data-voyage-bg="#101B2E"
+          data-voyage-bg="#070C15"
           data-snap
           className="flex min-h-[100svh] items-center py-20 text-sable md:py-28"
         >
@@ -284,8 +283,7 @@ export default function HomePage() {
             </ImageReveal>
             <div>
               <ChapterHeader
-                time="20h30"
-                chapter="L'heure d'or"
+                chapter="À bord"
                 title="On coupe le moteur, et le silence prend la place."
                 tone="dark"
               />
@@ -318,8 +316,7 @@ export default function HomePage() {
           <Stars />
           <div className="container relative">
             <ChapterHeader
-              time="23h00"
-              chapter="La nuit à l'ancre"
+              chapter="La nuit insolite"
               title="Et quand tout le monde rentre au port, vous restez."
               tone="dark"
             />

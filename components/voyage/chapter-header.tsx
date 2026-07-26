@@ -16,36 +16,28 @@ export function ChapterHeader({ time, chapter, title, tone = "light", className 
 
   return (
     <Reveal className={className}>
-      <div className="flex items-baseline gap-4">
-        {time && (
-          <span
-            className={cn(
-              "font-serif text-2xl italic tabular-nums md:text-3xl",
-              onDark ? "text-brass" : "text-brass-400"
-            )}
-          >
-            {time}
-          </span>
-        )}
+      {/* L'heure et le nom du chapitre sur une seule ligne discrète : le
+          visiteur situe le moment sans que la page lui compte les heures. */}
+      <div className="flex items-center gap-3">
         <span
           className={cn(
-            "h-px flex-1 max-w-24",
-            onDark ? "bg-sable/25" : "bg-marine/20"
+            "h-px w-8 shrink-0",
+            onDark ? "bg-brass/60" : "bg-brass-400/60"
           )}
           aria-hidden="true"
         />
         <span
           className={cn(
-            "text-[0.65rem] font-semibold uppercase tracking-[0.3em] sm:text-xs",
-            onDark ? "text-sable/60" : "text-marine/60"
+            "text-[0.65rem] font-semibold uppercase tracking-[0.25em] sm:text-xs",
+            onDark ? "text-brass" : "text-brass-400"
           )}
         >
-          {chapter}
+          {time ? `${time} · ${chapter}` : chapter}
         </span>
       </div>
       <h2
         className={cn(
-          "mt-4 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl md:text-5xl",
+          "mt-5 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl md:text-5xl",
           onDark ? "text-sable" : "text-marine"
         )}
       >

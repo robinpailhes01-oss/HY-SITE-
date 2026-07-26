@@ -7,7 +7,6 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { VoyageScroller } from "@/components/voyage/voyage-scroller";
 import { ChapterHeader } from "@/components/voyage/chapter-header";
 import { Stars } from "@/components/voyage/stars";
-import { TimeIndicator } from "@/components/experience/time-indicator";
 import { ExperienceFacts } from "@/components/experience/experience-facts";
 import { pageMetadata } from "@/lib/seo";
 
@@ -22,8 +21,6 @@ export const metadata = pageMetadata({
 export default function NuitsInsolitesPage() {
   return (
     <main>
-      <TimeIndicator />
-
       <PageHero
         eyebrow="La nuit insolite"
         time="18h00"
@@ -47,8 +44,6 @@ export default function NuitsInsolitesPage() {
         {/* 18h00 — L'embarquement (fin d'après-midi dorée) */}
         <section
           data-voyage-bg="#EFE7D4"
-          data-log-time="18h00"
-          data-log-label="L'embarquement"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28"
         >
@@ -83,8 +78,6 @@ export default function NuitsInsolitesPage() {
         {/* 19h30 — Coucher de soleil & tapas (embrasement) */}
         <section
           data-voyage-bg="#8A4023"
-          data-log-time="19h30"
-          data-log-label="Coucher de soleil & tapas"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
@@ -120,8 +113,6 @@ export default function NuitsInsolitesPage() {
         {/* 22h30 — La nuit sur l'eau */}
         <section
           data-voyage-bg="#070C15"
-          data-log-time="22h30"
-          data-log-label="La nuit sur l'eau"
           data-snap
           className="relative flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
@@ -162,8 +153,6 @@ export default function NuitsInsolitesPage() {
         {/* 08h00 — Le réveil (aube) */}
         <section
           data-voyage-bg="#F2E4D4"
-          data-log-time="08h00"
-          data-log-label="Le réveil face à l'aube"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28"
         >

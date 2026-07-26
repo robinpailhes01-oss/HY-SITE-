@@ -104,7 +104,6 @@ export default function TarifsPage() {
       <section className="bg-sable py-24 md:py-32">
         <div className="container">
           <ChapterHeader
-            time="14h00"
             chapter="La journée"
             title="Trois façons de passer la journée en mer."
           />
@@ -199,7 +198,6 @@ export default function TarifsPage() {
         <div className="container relative grid gap-12 md:grid-cols-[1fr_0.85fr] md:items-center md:gap-20">
           <div>
             <ChapterHeader
-              time="18h00"
               chapter="La nuit"
               title="Et une façon de ne pas rentrer."
               tone="dark"
@@ -257,7 +255,6 @@ export default function TarifsPage() {
       <section className="bg-marine-400 py-24 text-sable md:py-32">
         <div className="container max-w-3xl">
           <ChapterHeader
-            time="22h00"
             chapter="Avant de réserver"
             title="Les questions qu'on nous pose vraiment."
             tone="dark"

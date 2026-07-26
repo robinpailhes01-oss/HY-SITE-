@@ -1,4 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
 import { REVIEWS } from "@/lib/reviews";
+import { CONTACT } from "@/lib/nav";
 import { Stars } from "@/components/voyage/stars";
 import { Reveal } from "@/components/motion/reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
@@ -15,10 +17,22 @@ export function ReviewsSection() {
     <section className="relative overflow-hidden bg-marine-400 py-28 text-sable md:py-36">
       <Stars />
       <div className="container relative">
-        <Reveal>
+        <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <h2 className="max-w-xl font-serif text-3xl italic leading-tight md:text-4xl">
             Ce qu&apos;il en reste, après.
           </h2>
+          <a
+            href={CONTACT.googleReviewsHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-sable/60 transition-colors hover:text-brass"
+          >
+            Voir tous nos avis Google
+            <ArrowUpRight
+              size={14}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
         </Reveal>
 
         <StaggerGroup className="mt-16 grid gap-14 md:mt-20 md:grid-cols-3 md:gap-10">

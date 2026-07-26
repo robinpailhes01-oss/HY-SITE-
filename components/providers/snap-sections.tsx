@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 
-const SETTLE_DELAY = 130; // repos avant d'aimanter
-const PROXIMITY = 0.32; // n'aimante que si la section est déjà proche (32% de l'écran)
+const SETTLE_DELAY = 160; // repos avant d'aimanter
+const PROXIMITY = 0.22; // n'aimante que si la section est déjà très proche (22% de l'écran)
 const MIN_OFFSET = 8; // en dessous, on considère la section déjà alignée
 
 /**
@@ -61,7 +61,7 @@ export function SnapSections() {
       snapping = true;
       lenis.scrollTo(closest, {
         offset: -offset,
-        duration: 0.9,
+        duration: 0.6,
         easing: (t: number) => 1 - Math.pow(1 - t, 3),
         onComplete: () => {
           snapping = false;
@@ -70,7 +70,7 @@ export function SnapSections() {
       // Filet de sécurité si onComplete ne se déclenche pas.
       setTimeout(() => {
         snapping = false;
-      }, 1200);
+      }, 900);
     };
 
     const onScroll = () => {

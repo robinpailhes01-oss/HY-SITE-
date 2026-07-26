@@ -66,7 +66,14 @@ export function SiteFooter() {
               </li>
               <li className="flex items-center gap-2">
                 <InstagramIcon size={16} className="shrink-0 text-brass" />
-                <span>{CONTACT.instagram}</span>
+                <a
+                  href={CONTACT.instagramHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-brass"
+                >
+                  {CONTACT.instagram}
+                </a>
               </li>
             </ul>
           </div>

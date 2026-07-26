@@ -163,7 +163,16 @@ export function BookingForm({
           reste qu&apos;à l&apos;envoyer. Le capitaine consulte la météo et vous
           répond avant demain soir. Pas d&apos;application mail sur cet
           appareil ? Copiez le mot ci-dessous et glissez-le nous en message sur
-          Instagram <span className={cn("font-semibold", INK)}>{CONTACT.instagram}</span>.
+          Instagram{" "}
+          <a
+            href={CONTACT.instagramHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn("font-semibold underline underline-offset-2", INK)}
+          >
+            {CONTACT.instagram}
+          </a>
+          .
         </p>
         <pre
           className={cn(

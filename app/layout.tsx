@@ -8,6 +8,7 @@ import { SiteCursor } from "@/components/cursor/site-cursor";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
 import { SnapSections } from "@/components/providers/snap-sections";
 import { Preloader } from "@/components/preloader";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const fraunces = Fraunces({
@@ -95,6 +96,7 @@ export default function RootLayout({
           <SiteHeader />
           {children}
           <SiteFooter />
+          <WhatsAppButton />
           <div className="grain-overlay" aria-hidden="true" />
         </MotionConfig>
       </body>

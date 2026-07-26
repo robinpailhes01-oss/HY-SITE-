@@ -35,7 +35,7 @@ const JOURNEES: Journee[] = [
     id: "coucher-de-soleil",
     name: "Coucher de soleil",
     duration: "3 heures",
-    price: "390 €",
+    price: "380 €",
     guests: "Jusqu'à 10 personnes",
     detail:
       "Départ en fin d'après-midi, quand la lumière devient rasante. On coupe le moteur au large pour l'apéritif, et on rentre à la nuit tombante.",

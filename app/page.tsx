@@ -18,6 +18,7 @@ import { BoatTour } from "@/components/boat-tour";
 import { StickyCta } from "@/components/sticky-cta";
 import { HeroVideo } from "@/components/hero-video";
 import { ReviewsSection } from "@/components/reviews/reviews-section";
+import { SceneFade } from "@/components/motion/scene-fade";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -95,7 +96,7 @@ export default function HomePage() {
       <StickyCta />
 
       {/* ── 1. Embarquement immédiat ─────────────────────────────────── */}
-      <section data-snap className="relative flex min-h-[100svh] items-end overflow-hidden">
+      <SceneFade as="section" data-snap fadeIn={false} className="relative flex min-h-[100svh] items-end overflow-hidden">
         <Parallax className="absolute inset-0">
           <Image
             src="/images/hero-sillage-coucher-soleil.jpg"
@@ -154,15 +155,18 @@ export default function HomePage() {
           <span className="text-[0.6rem] uppercase tracking-[0.3em]">La traversée commence</span>
           <span className="block h-10 w-px animate-pulse bg-gradient-to-b from-sable/0 via-sable/70 to-sable/0" />
         </div>
-      </section>
+      </SceneFade>
 
       {/* ── 2. La bifurcation : jour ou nuit ─────────────────────────── */}
-      <TraverseeChooser />
+      <SceneFade>
+        <TraverseeChooser />
+      </SceneFade>
 
       {/* ── Une seule bascule de lumière : le jour, puis la nuit ─────── */}
       <VoyageScroller>
         {/* 3. 14h00 — L'embarquement */}
-        <section
+        <SceneFade
+          as="section"
           data-voyage-bg="#F7F3EA"
           data-snap
           className="flex min-h-[100svh] items-center py-20 md:py-28"
@@ -200,14 +204,16 @@ export default function HomePage() {
               </p>
             </Reveal>
           </div>
-        </section>
+        </SceneFade>
 
         {/* 4. Le bateau — la question que se pose vraiment un client qui hésite. */}
-        <BoatTour />
+        <SceneFade>
+          <BoatTour />
+        </SceneFade>
 
         {/* 5. Une occasion, une carte : plus de scroll horizontal, tout se lit
             d'un coup d'œil. */}
-        <section data-voyage-bg="#F7F3EA" className="py-24 md:py-28">
+        <SceneFade as="section" data-voyage-bg="#F7F3EA" className="py-24 md:py-28">
           <div className="container">
             <ChapterHeader
               chapter="Pour quelle occasion"
@@ -247,10 +253,11 @@ export default function HomePage() {
               ))}
             </StaggerGroup>
           </div>
-        </section>
+        </SceneFade>
 
         {/* 6. 23h00 — La nuit à l'ancre */}
-        <section
+        <SceneFade
+          as="section"
           data-voyage-bg="#070C15"
           data-snap
           className="relative flex min-h-[100svh] items-center py-20 text-sable md:py-28"
@@ -295,11 +302,13 @@ export default function HomePage() {
               </ImageReveal>
             </div>
           </div>
-        </section>
+        </SceneFade>
       </VoyageScroller>
 
       {/* ── 7. La preuve : leurs traversées ──────────────────────────── */}
-      <ReviewsSection />
+      <SceneFade fadeOut={false}>
+        <ReviewsSection />
+      </SceneFade>
     </main>
   );
 }

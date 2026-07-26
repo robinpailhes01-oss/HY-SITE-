@@ -9,7 +9,6 @@ import { HeroContent, HeroItem } from "@/components/motion/hero-content";
 import { Parallax } from "@/components/motion/parallax";
 import { SplitText } from "@/components/motion/split-text";
 import { Magnetic } from "@/components/motion/magnetic";
-import { PinnedHorizontal } from "@/components/motion/pinned-horizontal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { TraverseeChooser } from "@/components/experience/traversee-chooser";
 import { VoyageScroller } from "@/components/voyage/voyage-scroller";
@@ -52,7 +51,7 @@ const EXPERIENCES = [
     title: "EVJF & anniversaires",
     description:
       "Votre musique, la baignade au large, et personne d'autre à bord que vous.",
-    price: "Dès 390 €",
+    price: "Dès 380 €",
     image: "/images/sortie-groupe-jour.jpg",
     imageAlt: "Groupe d'amis au ponton de bain du yacht par une journée ensoleillée",
     href: "/reserver?experience=jour",
@@ -84,9 +83,9 @@ const EXPERIENCES = [
 
 /**
  * L'accueil se lit comme une suite d'écrans pleins, un par idée, chacun avec
- * son action : embarquement → le choix jour/nuit → les trois gestes → les trois
- * occasions → l'heure d'or → la nuit → la preuve. Aucun écran ne se termine
- * sans dire son prix et ce qu'il faut faire ensuite.
+ * son action : embarquement → le choix jour/nuit → les trois gestes → la
+ * visite du bateau → les trois occasions → la nuit → la preuve. Aucun écran
+ * ne se termine sans dire son prix et ce qu'il faut faire ensuite.
  */
 export default function HomePage() {
   const hasHeroVideo = existsSync(join(process.cwd(), "public/videos/hero.mp4"));
@@ -119,20 +118,15 @@ export default function HomePage() {
 
         <HeroContent className="container relative z-10 pb-24 pt-40 md:pb-28">
           <HeroItem>
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.35em] text-brass-50">
-              Carnon · Montpellier
-            </p>
-          </HeroItem>
-          <HeroItem>
             <SplitText
               as="h1"
-              text="Le large, en toute intimité."
-              className="mt-5 max-w-2xl font-serif text-4xl italic leading-[1.1] text-sable sm:text-5xl md:text-6xl"
+              text="Créateurs de moments authentiques sur l'eau."
+              className="max-w-2xl font-serif text-4xl italic leading-[1.1] text-sable sm:text-5xl md:text-6xl"
             />
           </HeroItem>
           <HeroItem>
-            <p className="mt-3 font-script text-3xl leading-none text-brass sm:text-4xl">
-              Créateurs de moments authentiques
+            <p className="mt-4 font-script text-3xl leading-none text-brass sm:text-4xl">
+              Harmonie Yacht · Carnon
             </p>
           </HeroItem>
           <HeroItem className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -211,103 +205,51 @@ export default function HomePage() {
         {/* 4. Le bateau — la question que se pose vraiment un client qui hésite. */}
         <BoatTour />
 
-        {/* 5·6·7. Une occasion par écran en portrait, une piste horizontale
-            épinglée sur desktop. */}
+        {/* 5. Une occasion, une carte : plus de scroll horizontal, tout se lit
+            d'un coup d'œil. */}
         <section data-voyage-bg="#F7F3EA" className="py-24 md:py-28">
           <div className="container">
             <ChapterHeader
               chapter="Pour quelle occasion"
               title="Votre moment, votre équipage."
             />
-          </div>
 
-          <PinnedHorizontal
-            className="relative mt-10 md:mt-16"
-            trackClassName="px-6 md:px-[max(1.5rem,calc((100vw-1120px)/2+1.5rem))]"
-          >
-            {EXPERIENCES.map((xp) => (
-              <Link
-                key={xp.number}
-                href={xp.href}
-                data-snap-mobile
-                className="group relative flex h-[80svh] w-full shrink-0 flex-col justify-end overflow-hidden md:h-[540px] md:w-[34vw] md:min-w-[440px]"
-              >
-                <Image
-                  src={xp.image}
-                  alt={xp.imageAlt}
-                  fill
-                  sizes="(min-width: 768px) 40vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                {/* En portrait la carte fait 80svh et son texte tombe sur la coque
-                    blanche en plein soleil : le voile doit tenir jusqu'à
-                    mi-hauteur, pas seulement au pied. */}
-                <div className="absolute inset-0 bg-gradient-to-t from-marine-400/95 via-marine-400/62 to-marine-400/10 transition-colors duration-500 group-hover:from-marine-400/97 md:via-marine-400/40" />
-                <span className="absolute left-6 top-6 font-serif text-5xl italic text-sable/45 md:text-6xl">
-                  {xp.number}
-                </span>
-                <div className="relative p-6 md:p-8">
-                  <h3 className="font-serif text-2xl text-sable md:text-3xl">{xp.title}</h3>
-                  <p className="mt-2 max-w-sm text-sm leading-relaxed text-sable/85">
-                    {xp.description}
-                  </p>
-                  <p className="mt-4 font-serif text-xl text-brass">{xp.price}</p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brass transition-colors group-hover:text-sable">
-                    {xp.cta}
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">
-                      →
-                    </span>
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </PinnedHorizontal>
-        </section>
-
-        {/* 7. 20h30 — L'heure d'or. Une photo, une phrase, une action : c'est ce
-            qui remplace l'ancienne section décorative « L'évasion ». */}
-        <section
-          data-voyage-bg="#070C15"
-          data-snap
-          className="flex min-h-[100svh] items-center py-20 text-sable md:py-28"
-        >
-          <div className="container grid gap-8 md:grid-cols-2 md:items-center md:gap-20">
-            <ImageReveal className="relative aspect-[4/5] max-h-[34svh] w-full overflow-hidden md:max-h-[58svh]">
-              <Image
-                src="/images/salon-interieur.jpg"
-                alt="Salon intérieur du yacht Harmonie Yacht, boiseries acajou et banquette en cuir crème"
-                fill
-                sizes="(min-width: 768px) 40vw, 100vw"
-                className="object-cover"
-              />
-            </ImageReveal>
-            <div>
-              <ChapterHeader
-                chapter="À bord"
-                title="On coupe le moteur, et le silence prend la place."
-                tone="dark"
-              />
-              <Reveal delay={0.1}>
-                <p className="mt-6 max-w-md text-base leading-relaxed text-sable/80">
-                  La table dressée au mouillage pendant que le ciel
-                  s&apos;embrase. Douze à bord, et personne d&apos;autre autour.
-                </p>
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <Magnetic>
-                    <Button href="/reserver?experience=jour&formule=coucher-de-soleil" variant="primary">
-                      Réserver cette soirée
-                    </Button>
-                  </Magnetic>
-                  <p className="text-[0.7rem] uppercase tracking-[0.2em] text-sable/60">
-                    Coucher de soleil · Dès 390 €
-                  </p>
-                </div>
-              </Reveal>
-            </div>
+            <StaggerGroup className="mt-10 grid gap-6 md:mt-16 md:grid-cols-3">
+              {EXPERIENCES.map((xp) => (
+                <StaggerItem key={xp.number}>
+                  <Link
+                    href={xp.href}
+                    className="group relative flex aspect-[3/4] w-full flex-col justify-end overflow-hidden"
+                  >
+                    <Image
+                      src={xp.image}
+                      alt={xp.imageAlt}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-marine-400/95 via-marine-400/45 to-marine-400/10 transition-colors duration-500 group-hover:from-marine-400/97" />
+                    <div className="relative p-6 md:p-7">
+                      <h3 className="font-serif text-2xl text-sable">{xp.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-sable/85">
+                        {xp.description}
+                      </p>
+                      <p className="mt-3 font-serif text-lg text-brass">{xp.price}</p>
+                      <span className="mt-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brass transition-colors group-hover:text-sable">
+                        {xp.cta}
+                        <span className="transition-transform duration-300 group-hover:translate-x-1">
+                          →
+                        </span>
+                      </span>
+                    </div>
+                  </Link>
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
           </div>
         </section>
 
-        {/* 8. 23h00 — La nuit à l'ancre */}
+        {/* 6. 23h00 — La nuit à l'ancre */}
         <section
           data-voyage-bg="#070C15"
           data-snap
@@ -356,7 +298,7 @@ export default function HomePage() {
         </section>
       </VoyageScroller>
 
-      {/* ── 9. La preuve : leurs traversées ──────────────────────────── */}
+      {/* ── 7. La preuve : leurs traversées ──────────────────────────── */}
       <ReviewsSection />
     </main>
   );

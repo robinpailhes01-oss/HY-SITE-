@@ -26,9 +26,9 @@ export function StickyCta() {
         >
           <div className="flex items-center justify-between gap-4">
             <div className="min-w-0">
-              <p className="font-serif text-sm text-sable">À partir de 390 €</p>
+              <p className="font-serif text-sm text-sable">À partir de 380 €</p>
               <p className="truncate text-[0.65rem] uppercase tracking-[0.15em] text-sable/60">
-                Capitaine inclus · Report météo gratuit
+                Jusqu&apos;à 10 personnes
               </p>
             </div>
             <Button href="/reserver" variant="primary" className="shrink-0 px-5 py-2.5 text-[0.7rem]">

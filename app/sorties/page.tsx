@@ -59,8 +59,8 @@ export default function SortiesPage() {
       <ExperienceFacts
         facts={[
           { label: "Formules", value: "3h · 4h · 8h" },
-          { label: "Équipage", value: "Jusqu'à 12 pers." },
-          { label: "Tarif", value: "Dès 390 €" },
+          { label: "Équipage", value: "Jusqu'à 10 pers." },
+          { label: "Tarif", value: "Dès 380 €" },
           { label: "Départ", value: "Port de Carnon" },
         ]}
       />
@@ -83,7 +83,7 @@ export default function SortiesPage() {
                 id: "coucher-de-soleil",
                 name: "Coucher de soleil",
                 duration: "3 heures",
-                price: "Dès 390 €",
+                price: "Dès 380 €",
                 detail: "Départ en fin de journée, pensée pour l'apéritif doré et les photos.",
               },
               {
@@ -324,7 +324,7 @@ export default function SortiesPage() {
             </Button>
           </Magnetic>
           <p className="mt-4 text-[0.7rem] uppercase tracking-[0.2em] text-sable/55">
-            Dès 390 € · Capitaine &amp; carburant inclus
+            Dès 380 € · Jusqu&apos;à 10 personnes
           </p>
         </Reveal>
       </section>

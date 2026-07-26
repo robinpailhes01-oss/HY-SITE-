@@ -23,7 +23,7 @@ interface Formule {
 
 const FORMULES: Record<Experience, Formule[]> = {
   jour: [
-    { id: "coucher-de-soleil", name: "Coucher de soleil", duration: "3 heures", price: "Dès 390 €" },
+    { id: "coucher-de-soleil", name: "Coucher de soleil", duration: "3 heures", price: "Dès 380 €" },
     { id: "apres-midi", name: "Après-midi", duration: "4 heures", price: "Dès 590 €" },
     { id: "journee", name: "Journée", duration: "8 heures", price: "Dès 990 €" },
   ],
@@ -227,8 +227,8 @@ export function BookingForm({
                       id: "jour" as const,
                       icon: Sun,
                       title: "Sortie en mer",
-                      text: "EVJF, anniversaire, entreprise — jusqu'à 12 personnes.",
-                      price: "Dès 390 €",
+                      text: "EVJF, anniversaire, entreprise — jusqu'à 10 personnes.",
+                      price: "Dès 380 €",
                     },
                     {
                       id: "nuit" as const,

@@ -41,10 +41,10 @@ export function TraverseeChooser() {
               </h3>
               <p className="mt-2 max-w-sm text-sm leading-relaxed text-sable/85">
                 EVJF, anniversaires, entreprise — baignade au large, musique et
-                soleil, jusqu&apos;à 12 personnes.
+                soleil, jusqu&apos;à 10 personnes.
               </p>
               <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-brass">
-                Dès 390 € · Je choisis le jour →
+                Dès 380 € · Je choisis le jour →
               </p>
             </div>
           </Link>

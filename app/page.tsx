@@ -73,7 +73,7 @@ const EXPERIENCES = [
     title: "Nuit insolite",
     description:
       "À deux, ancrés face à l'horizon. Vous dînez au couchant, et vous ne rentrez pas au port.",
-    price: "Dès 450 €",
+    price: "Dès 350 €",
     image: "/images/cabine-lit-nuit-insolite.jpg",
     imageAlt: "Cabine principale du yacht préparée pour une nuit insolite en couple",
     href: "/reserver?experience=nuit",
@@ -280,7 +280,7 @@ export default function HomePage() {
                     </Button>
                   </Magnetic>
                   <p className="text-[0.7rem] uppercase tracking-[0.2em] text-sable/60">
-                    18h00 → 10h00 · Dès 450 € pour deux
+                    18h00 → 10h00 · Dès 350 € pour deux
                   </p>
                 </div>
               </Reveal>

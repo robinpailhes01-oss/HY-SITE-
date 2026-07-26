@@ -74,7 +74,7 @@ export function TraverseeChooser() {
                 nuit sur l&apos;eau et petit-déjeuner au réveil.
               </p>
               <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-brass">
-                Dès 450 € · Je choisis la nuit →
+                Dès 350 € · Je choisis la nuit →
               </p>
             </div>
           </Link>

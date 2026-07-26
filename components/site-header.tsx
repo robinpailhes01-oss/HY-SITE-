@@ -33,7 +33,11 @@ export function SiteHeader() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
-        transparent ? "bg-transparent" : "bg-sable/95 backdrop-blur-sm shadow-[0_1px_0_0_rgba(16,27,46,0.08)]"
+        // Hors accueil, l'en-tête prend la lumière de la page (identique au sable
+        // partout, sauf sur la réservation qui bascule jour/nuit).
+        transparent
+          ? "bg-transparent"
+          : "amb-header-bg backdrop-blur-sm shadow-[0_1px_0_0_var(--amb-line)]"
       )}
     >
       <div className="container flex h-20 items-center justify-between">
@@ -41,13 +45,20 @@ export function SiteHeader() {
           href="/"
           className={cn(
             "flex items-center gap-3 transition-colors duration-500",
-            transparent ? "text-sable" : "text-marine"
+            transparent ? "text-sable" : "text-[color:var(--amb-ink)]"
           )}
         >
-          <Monogram className={cn("h-8 w-8 shrink-0", transparent ? "text-brass" : "text-brass-400")} />
+          <Monogram
+            className={cn(
+              "h-8 w-8 shrink-0",
+              transparent ? "text-brass" : "text-[color:var(--amb-accent)]"
+            )}
+          />
           <span className="font-serif text-lg tracking-[0.2em] uppercase">
             Harmonie{" "}
-            <span className={transparent ? "text-brass" : "text-brass-400"}>Yacht</span>
+            <span className={transparent ? "text-brass" : "text-[color:var(--amb-accent)]"}>
+              Yacht
+            </span>
           </span>
         </Link>
 
@@ -58,8 +69,11 @@ export function SiteHeader() {
               href={link.href}
               className={cn(
                 "text-sm font-medium tracking-wide transition-colors duration-300",
-                transparent ? "text-sable/90 hover:text-brass" : "text-marine/80 hover:text-brass-400",
-                pathname === link.href && (transparent ? "text-brass" : "text-brass-400")
+                transparent
+                  ? "text-sable/90 hover:text-brass"
+                  : "text-[color:var(--amb-ink-soft)] hover:text-[color:var(--amb-accent)]",
+                pathname === link.href &&
+                  (transparent ? "text-brass" : "text-[color:var(--amb-accent)]")
               )}
             >
               {link.label}
@@ -80,7 +94,7 @@ export function SiteHeader() {
           onClick={() => setMenuOpen((v) => !v)}
           className={cn(
             "lg:hidden -mr-2.5 inline-flex h-11 w-11 items-center justify-center transition-colors duration-300",
-            transparent ? "text-sable" : "text-marine"
+            transparent ? "text-sable" : "text-[color:var(--amb-ink)]"
           )}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -90,7 +104,7 @@ export function SiteHeader() {
       <div
         id="mobile-nav"
         className={cn(
-          "lg:hidden overflow-hidden bg-sable transition-[max-height,opacity] duration-300 ease-out",
+          "lg:hidden overflow-hidden bg-[color:var(--amb-page)] transition-[max-height,opacity] duration-300 ease-out",
           menuOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"
         )}
       >
@@ -100,8 +114,8 @@ export function SiteHeader() {
               key={link.href}
               href={link.href}
               className={cn(
-                "py-3 text-base font-medium border-b border-marine/10 text-marine/90",
-                pathname === link.href && "text-brass-400"
+                "py-3 text-base font-medium border-b border-[color:var(--amb-line)] text-[color:var(--amb-ink)]",
+                pathname === link.href && "text-[color:var(--amb-accent)]"
               )}
             >
               {link.label}

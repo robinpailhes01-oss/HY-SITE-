@@ -8,7 +8,6 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { VoyageScroller } from "@/components/voyage/voyage-scroller";
 import { ChapterHeader } from "@/components/voyage/chapter-header";
-import { TimeIndicator } from "@/components/experience/time-indicator";
 import { ExperienceFacts } from "@/components/experience/experience-facts";
 import { pageMetadata } from "@/lib/seo";
 
@@ -47,12 +46,12 @@ const OCCASIONS = [
 export default function SortiesPage() {
   return (
     <main>
-      <TimeIndicator />
-
       <PageHero
-        eyebrow="Sorties en mer · La traversée de jour"
+        eyebrow="La sortie en mer"
+        time="14h00"
+        moment="plein-jour"
         title="Votre journée, votre mer, votre rythme."
-        description="De l'embarquement au retour dans le soleil couchant — voici, heure par heure, la journée que vous allez vivre."
+        description="Heure par heure, la journée que vous allez vivre."
         image="/images/sortie-groupe-jour.jpg"
         imageAlt="Groupe d'amis profitant du ponton gonflable à l'arrière du yacht par une journée ensoleillée"
       />
@@ -150,8 +149,6 @@ export default function SortiesPage() {
         {/* 14h00 — L'embarquement */}
         <section
           data-voyage-bg="#F7F3EA"
-          data-log-time="14h00"
-          data-log-label="L'embarquement"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28"
         >
@@ -185,8 +182,6 @@ export default function SortiesPage() {
         {/* 15h00 — Le grand bleu */}
         <section
           data-voyage-bg="#1C2C46"
-          data-log-time="15h00"
-          data-log-label="Baignade au large"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
@@ -221,8 +216,6 @@ export default function SortiesPage() {
         {/* 17h30 — L'apéritif */}
         <section
           data-voyage-bg="#8A4023"
-          data-log-time="17h30"
-          data-log-label="L'apéritif au soleil"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
@@ -257,8 +250,6 @@ export default function SortiesPage() {
         {/* 19h00 — Le retour au couchant */}
         <section
           data-voyage-bg="#101B2E"
-          data-log-time="19h00"
-          data-log-label="Le retour au couchant"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
@@ -291,24 +282,21 @@ export default function SortiesPage() {
         </section>
       </VoyageScroller>
 
-      <section className="bg-sable py-24 md:py-32">
+      <section className="bg-marine py-24 text-sable md:py-32">
         <div className="container">
-          <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brass-400">
-              Pour chaque occasion
-            </p>
-            <h2 className="mt-5 max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">
-              Trois façons de vivre cette journée.
-            </h2>
-          </Reveal>
+          <ChapterHeader
+            chapter="Pour chaque occasion"
+            title="Trois façons de vivre cette journée."
+            tone="dark"
+          />
 
           <StaggerGroup className="mt-16 grid gap-6 md:grid-cols-3">
             {OCCASIONS.map(({ id, icon: Icon, title, description }) => (
               <StaggerItem key={id} id={id} className="scroll-mt-28">
-                <div className="h-full border border-marine/10 bg-sable-50 p-8">
-                  <Icon className="text-brass-400" size={28} strokeWidth={1.5} />
-                  <h3 className="mt-6 font-serif text-xl text-marine">{title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-marine/70">
+                <div className="h-full border border-sable/15 bg-sable/[0.04] p-8">
+                  <Icon className="text-brass" size={28} strokeWidth={1.5} />
+                  <h3 className="mt-6 font-serif text-xl text-sable">{title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-sable/75">
                     {description}
                   </p>
                 </div>
@@ -318,23 +306,25 @@ export default function SortiesPage() {
         </div>
       </section>
 
-      <section className="bg-sable pb-24 pt-0 text-center md:pb-32">
+      <section className="bg-marine-400 py-24 text-center text-sable md:py-32">
         <Reveal className="container flex flex-col items-center">
-          <h2 className="max-w-xl font-serif text-3xl leading-tight text-marine md:text-4xl">
+          <p className="font-script text-3xl leading-none text-brass sm:text-4xl">
+            La mer vous attend
+          </p>
+          <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight md:text-4xl">
             Un projet de sortie en tête ?
           </h2>
-          <p className="mt-6 max-w-md text-base leading-relaxed text-marine/70">
-            Racontez-nous l&apos;occasion, le nombre de personnes et la date
-            souhaitée : nous revenons vers vous avec une proposition sur
-            mesure.
+          <p className="mt-6 max-w-md text-base leading-relaxed text-sable/75">
+            Dites-nous l&apos;occasion, le nombre de personnes et la date qui
+            vous arrange. On vous répond avec un prix ferme, sous 24h.
           </p>
           <Magnetic className="mt-10 inline-block">
-            <Button href="/contact" variant="primary">
-              Demander un devis
+            <Button href="/reserver?experience=jour" variant="primary">
+              Réserver ma sortie
             </Button>
           </Magnetic>
-          <p className="mt-4 text-[0.7rem] uppercase tracking-[0.2em] text-marine/50">
-            Dès 390 € · Capitaine & carburant inclus
+          <p className="mt-4 text-[0.7rem] uppercase tracking-[0.2em] text-sable/55">
+            Dès 390 € · Capitaine &amp; carburant inclus
           </p>
         </Reveal>
       </section>

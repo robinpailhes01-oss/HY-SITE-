@@ -7,7 +7,6 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { VoyageScroller } from "@/components/voyage/voyage-scroller";
 import { ChapterHeader } from "@/components/voyage/chapter-header";
 import { Stars } from "@/components/voyage/stars";
-import { TimeIndicator } from "@/components/experience/time-indicator";
 import { ExperienceFacts } from "@/components/experience/experience-facts";
 import { pageMetadata } from "@/lib/seo";
 
@@ -22,14 +21,14 @@ export const metadata = pageMetadata({
 export default function NuitsInsolitesPage() {
   return (
     <main>
-      <TimeIndicator />
-
       <PageHero
-        eyebrow="Nuit insolite · La traversée de nuit"
+        eyebrow="La nuit insolite"
+        time="18h00"
+        moment="heure-doree"
         title="Une nuit à deux, ancrés face à l'horizon."
-        description="Du coucher de soleil au petit-déjeuner face à l'aube — voici, heure par heure, la nuit que vous allez vivre."
-        image="/images/cabine-lit-nuit-insolite.jpg"
-        imageAlt="Cabine principale du yacht avec lit rond et boiseries chaleureuses, préparée pour une nuit insolite"
+        description="Heure par heure, la nuit que vous allez vivre."
+        image="/images/exterieur-coucher-soleil.jpg"
+        imageAlt="Le yacht Harmonie Yacht au mouillage au large de Carnon, au coucher du soleil"
       />
 
       <ExperienceFacts
@@ -45,8 +44,6 @@ export default function NuitsInsolitesPage() {
         {/* 18h00 — L'embarquement (fin d'après-midi dorée) */}
         <section
           data-voyage-bg="#EFE7D4"
-          data-log-time="18h00"
-          data-log-label="L'embarquement"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28"
         >
@@ -81,8 +78,6 @@ export default function NuitsInsolitesPage() {
         {/* 19h30 — Coucher de soleil & tapas (embrasement) */}
         <section
           data-voyage-bg="#8A4023"
-          data-log-time="19h30"
-          data-log-label="Coucher de soleil & tapas"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
@@ -118,8 +113,6 @@ export default function NuitsInsolitesPage() {
         {/* 22h30 — La nuit sur l'eau */}
         <section
           data-voyage-bg="#070C15"
-          data-log-time="22h30"
-          data-log-label="La nuit sur l'eau"
           data-snap
           className="relative flex min-h-[100svh] items-center py-24 md:py-28 text-sable"
         >
@@ -160,8 +153,6 @@ export default function NuitsInsolitesPage() {
         {/* 08h00 — Le réveil (aube) */}
         <section
           data-voyage-bg="#F2E4D4"
-          data-log-time="08h00"
-          data-log-label="Le réveil face à l'aube"
           data-snap
           className="flex min-h-[100svh] items-center py-24 md:py-28"
         >
@@ -194,7 +185,7 @@ export default function NuitsInsolitesPage() {
         </section>
       </VoyageScroller>
 
-      <section className="bg-sable py-24 text-center md:py-32">
+      <section className="bg-sable-200 py-24 text-center md:py-32">
         <Reveal className="container flex flex-col items-center">
           <p className="font-script text-3xl text-brass-400 sm:text-4xl">
             Votre nuit vous attend

@@ -18,7 +18,11 @@ export function SnapSections() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-snap]"));
+    // `data-snap-mobile` sert aux blocs qui ne sont plein écran qu'en portrait :
+    // sur desktop ils repassent en piste horizontale et ne doivent pas aimanter.
+    const mobile = !window.matchMedia("(min-width: 768px)").matches;
+    const selector = mobile ? "[data-snap], [data-snap-mobile]" : "[data-snap]";
+    const sections = Array.from(document.querySelectorAll<HTMLElement>(selector));
     if (sections.length === 0) return;
 
     let settleTimer: ReturnType<typeof setTimeout> | undefined;

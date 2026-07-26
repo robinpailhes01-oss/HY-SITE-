@@ -8,6 +8,13 @@ export const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+/** Pied de page uniquement — hors du parcours principal. */
+export const LEGAL_LINKS = [
+  { href: "/mentions-legales", label: "Mentions légales" },
+  { href: "/cgv", label: "CGV" },
+  { href: "/confidentialite", label: "Confidentialité" },
+] as const;
+
 export const CONTACT = {
   phone: "+33 6 00 00 00 00",
   phoneHref: "+33600000000",

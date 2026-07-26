@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Star, X } from "lucide-react";
+import { X } from "lucide-react";
 import { Monogram } from "@/components/monogram";
 import { REVIEWS, type Review } from "@/lib/reviews";
 
@@ -165,19 +165,6 @@ export function ReviewToast({
               <p className="text-center font-script text-2xl leading-none text-brass-400">
                 Un mot de nos invités
               </p>
-
-              <div className="mt-3 flex justify-center gap-1">
-                {Array.from({ length: current.rating }, (_, i) => (
-                  <motion.span
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.4 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.55 + i * 0.07, duration: 0.35, ease: EASE }}
-                  >
-                    <Star size={11} className="fill-brass text-brass" />
-                  </motion.span>
-                ))}
-              </div>
 
               <p className="mt-4 text-center font-serif text-[0.95rem] italic leading-relaxed text-marine/90">
                 « {current.text} »

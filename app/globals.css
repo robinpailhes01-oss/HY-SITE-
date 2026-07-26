@@ -33,6 +33,131 @@ html.custom-cursor-active * {
   cursor: none !important;
 }
 
+/* ── L'ambiance : la lumière suit le choix du visiteur ───────────────────
+   Les propriétés sont enregistrées en <color> pour être réellement
+   interpolables : quand `data-moment` change, le fond, l'encre, les filets et
+   le laiton glissent ensemble d'une lumière à l'autre au lieu de sauter. Les
+   enfants héritent des valeurs intermédiaires — une seule transition pilote
+   toute la page. Navigateurs sans @property : bascule instantanée, lisible. */
+@property --amb-page {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f7f3ea;
+}
+@property --amb-surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fdfcf9;
+}
+@property --amb-ink {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #101b2e;
+}
+@property --amb-ink-soft {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(16, 27, 46, 0.72);
+}
+@property --amb-ink-faint {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(16, 27, 46, 0.55);
+}
+@property --amb-line {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(16, 27, 46, 0.16);
+}
+@property --amb-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #755530;
+}
+/* La carte choisie s'inverse toujours par rapport à la page : sombre sur le
+   jour, claire sur la nuit. Le choix se lit d'un coup d'œil dans les deux cas. */
+@property --amb-selected {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #101b2e;
+}
+@property --amb-selected-ink {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f7f3ea;
+}
+@property --amb-selected-soft {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(247, 243, 234, 0.75);
+}
+@property --amb-selected-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #b8935a;
+}
+
+/* La transition vit sur <html> : l'en-tête fixe, hors du flux de la page,
+   change de lumière en même temps que le reste au lieu de rester en sable. */
+html,
+.ambiance {
+  transition:
+    --amb-page 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    --amb-surface 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    --amb-ink 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    --amb-ink-soft 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    --amb-ink-faint 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    --amb-line 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    --amb-accent 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    --amb-selected 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    --amb-selected-ink 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    --amb-selected-soft 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    --amb-selected-accent 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ambiance {
+  background-color: var(--amb-page);
+  color: var(--amb-ink);
+}
+
+/* Tailwind ne sait pas injecter d'alpha dans une couleur var() : l'en-tête
+   translucide passe donc par color-mix plutôt que par un modificateur `/95`. */
+.amb-header-bg {
+  background-color: color-mix(in srgb, var(--amb-page) 94%, transparent);
+}
+
+/* La sortie en mer : le sable se réchauffe, l'or monte. */
+html[data-moment="jour"],
+.ambiance[data-moment="jour"] {
+  --amb-page: #f3ead9;
+  --amb-surface: #fdfaf2;
+  --amb-ink: #101b2e;
+  --amb-ink-soft: rgba(16, 27, 46, 0.72);
+  --amb-ink-faint: rgba(16, 27, 46, 0.55);
+  --amb-line: rgba(117, 85, 48, 0.28);
+  --amb-accent: #755530;
+  --amb-selected: #101b2e;
+  --amb-selected-ink: #f7f3ea;
+  --amb-selected-soft: rgba(247, 243, 234, 0.75);
+  --amb-selected-accent: #b8935a;
+}
+
+/* La nuit insolite : la page bascule au mouillage. */
+html[data-moment="nuit"],
+.ambiance[data-moment="nuit"] {
+  --amb-page: #070c15;
+  --amb-surface: rgba(247, 243, 234, 0.05);
+  --amb-ink: #f7f3ea;
+  --amb-ink-soft: rgba(247, 243, 234, 0.75);
+  --amb-ink-faint: rgba(247, 243, 234, 0.5);
+  --amb-line: rgba(247, 243, 234, 0.18);
+  --amb-accent: #b8935a;
+  --amb-selected: #f7f3ea;
+  --amb-selected-ink: #101b2e;
+  --amb-selected-soft: rgba(16, 27, 46, 0.72);
+  --amb-selected-accent: #755530;
+}
+
 html.lenis,
 html.lenis body {
   height: auto;
@@ -40,24 +165,6 @@ html.lenis body {
 
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
-}
-
-.marquee-outline {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(16, 27, 46, 0.35);
-}
-
-.marquee-track {
-  animation: marquee-scroll 45s linear infinite;
-}
-
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 /* Grain photographique : matière subtile sur les aplats numériques */
@@ -110,9 +217,6 @@ html.lenis body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
   .star-twinkle {
     animation: none;
     opacity: 0.5;

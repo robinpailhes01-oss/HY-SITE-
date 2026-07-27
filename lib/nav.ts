@@ -18,9 +18,7 @@ export const LEGAL_LINKS = [
 export const CONTACT = {
   phone: "+33 6 00 00 00 00",
   phoneHref: "+33600000000",
-  // ⚠️ À REMPLACER par le vrai numéro WhatsApp avant mise en ligne — wa.me
-  // exige le numéro complet, sans « + » ni espaces.
-  whatsappHref: "https://wa.me/33600000000",
+  whatsappHref: "https://wa.me/message/KNP3A2CTCZDBK1",
   email: "contact@harmonie-yacht.fr",
   instagram: "@harmonieyacht",
   instagramHref: "https://www.instagram.com/harmonieyacht/",

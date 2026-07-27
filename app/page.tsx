@@ -53,8 +53,8 @@ const EXPERIENCES = [
     description:
       "Votre musique, la baignade au large, et personne d'autre à bord que vous.",
     price: "Dès 380 €",
-    image: "/images/sortie-groupe-jour.jpg",
-    imageAlt: "Groupe d'amis au ponton de bain du yacht par une journée ensoleillée",
+    image: "/images/dj-coucher-soleil.jpg",
+    imageAlt: "DJ set à bord au coucher du soleil pendant un EVJF",
     href: "/reserver?experience=jour",
     cta: "Réserver cette sortie",
   },

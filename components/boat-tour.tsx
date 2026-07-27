@@ -48,8 +48,8 @@ const ESPACES: Espace[] = [
   {
     name: "Le ponton de bain",
     detail: "Gonflable, avec échelle de mer pour remonter sans effort.",
-    image: "/images/sortie-groupe-jour.jpg",
-    alt: "Ponton de bain gonflable déployé à l'arrière du yacht, avec des invités qui se baignent",
+    image: "/images/groupe-poupe-baignade.jpg",
+    alt: "Groupe d'amis rassemblé à l'arrière du yacht, près du ponton de bain gonflable",
     span: true,
     position: "object-[center_58%]",
   },

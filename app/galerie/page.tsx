@@ -37,6 +37,28 @@ const PHOTOS = [
     src: "/images/cabine-lit-nuit-insolite.jpg",
     alt: "Cabine principale avec lit rond, préparée pour une nuit insolite",
   },
+  {
+    src: "/images/dj-coucher-soleil.jpg",
+    alt: "DJ set à bord au coucher du soleil, ambiance pour un EVJF ou un anniversaire",
+    size: "tall",
+  },
+  {
+    src: "/images/groupe-poupe-baignade.jpg",
+    alt: "Groupe d'amis rassemblé à l'arrière du yacht avant la baignade",
+  },
+  {
+    src: "/images/fruits-de-mer-roses-famille.jpg",
+    alt: "Plateau de fruits de mer et bouquet de roses partagés en famille à bord",
+  },
+  {
+    src: "/images/poupe-mouillage-ponton.jpg",
+    alt: "Le yacht au mouillage, ponton de bain déployé à l'arrière",
+    size: "tall",
+  },
+  {
+    src: "/images/nuit-poupe-crepuscule.jpg",
+    alt: "Vue arrière du yacht au crépuscule, ciel embrasé sur l'horizon",
+  },
 ] as const;
 
 export default function GaleriePage() {

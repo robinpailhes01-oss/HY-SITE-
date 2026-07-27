@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Anchor, Check, Fuel, LifeBuoy, Music } from "lucide-react";
+import { Anchor, Check, Fuel, LifeBuoy, Music, ShieldAlert } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
@@ -28,6 +28,21 @@ interface Journee {
   /** La formule la plus réservée — mise en avant, pas survendue. */
   featured?: boolean;
 }
+
+interface Location {
+  duration: string;
+  moment?: string;
+  withCaptain: number;
+  withoutCaptain: number;
+}
+
+/** Location courte, à l'heure — avec ou sans capitaine (obligation légale). */
+const LOCATIONS: Location[] = [
+  { duration: "2 heures", withCaptain: 380, withoutCaptain: 266 },
+  { duration: "2 heures", moment: "au coucher de soleil", withCaptain: 350, withoutCaptain: 245 },
+  { duration: "3 heures", withCaptain: 550, withoutCaptain: 385 },
+  { duration: "4 heures", withCaptain: 750, withoutCaptain: 525 },
+];
 
 /** Les trois façons de passer la journée, de la plus courte à la plus longue. */
 const JOURNEES: Journee[] = [
@@ -192,6 +207,64 @@ export default function TarifsPage() {
         </div>
       </section>
 
+      {/* ── Location à l'heure, avec ou sans capitaine ────────────────── */}
+      <section className="bg-sable-200 py-24 md:py-32">
+        <div className="container">
+          <ChapterHeader
+            chapter="Location"
+            title="À l'heure, avec ou sans capitaine."
+          />
+          <Reveal delay={0.05}>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-marine/70">
+              Pour une envie plus courte, le bateau se loue aussi à l&apos;heure.
+              Avec capitaine par défaut — et, comme la loi nous y oblige, en
+              location libre pour les skippers qualifiés.
+            </p>
+          </Reveal>
+
+          <div className="mt-12 overflow-hidden border border-marine/10">
+            <div className="grid grid-cols-3 gap-4 bg-marine px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-sable/70 sm:px-8">
+              <span>Durée</span>
+              <span className="text-right">Avec capitaine</span>
+              <span className="text-right">Sans capitaine</span>
+            </div>
+            <StaggerGroup>
+              {LOCATIONS.map((l) => (
+                <StaggerItem key={`${l.duration}-${l.moment ?? "standard"}`}>
+                  <div className="grid grid-cols-3 items-center gap-4 border-t border-marine/10 bg-sable-50 px-6 py-5 sm:px-8">
+                    <div>
+                      <p className="font-serif text-lg text-marine">{l.duration}</p>
+                      {l.moment && (
+                        <p className="text-xs uppercase tracking-[0.15em] text-marine/55">
+                          {l.moment}
+                        </p>
+                      )}
+                    </div>
+                    <p className="text-right font-serif text-2xl text-brass-400">
+                      {l.withCaptain} €
+                    </p>
+                    <p className="text-right font-serif text-2xl text-marine/70">
+                      {l.withoutCaptain} €
+                    </p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
+          </div>
+
+          <Reveal delay={0.1}>
+            <div className="mt-8 flex items-start gap-4 border border-brass/50 bg-marine px-6 py-6 text-sable sm:px-8">
+              <ShieldAlert size={28} className="mt-0.5 shrink-0 text-brass" />
+              <p className="text-sm font-semibold leading-relaxed sm:text-base">
+                Location sans capitaine réservée aux titulaires du permis
+                côtier depuis au moins 5 ans, justifiant de 50 heures de
+                navigation sur ce type de navire.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── La nuit : elle ne se range pas dans une grille ────────────── */}
       <section className="relative overflow-hidden bg-marine py-24 text-sable md:py-32">
         <Stars />
@@ -219,7 +292,7 @@ export default function TarifsPage() {
 
               <ul className="mt-8 space-y-3 text-sm leading-relaxed text-sable/80">
                 {[
-                  "Sortie en mer et coucher de soleil compris",
+                  "Sortie en mer d'une heure et coucher de soleil compris",
                   "Tapas de notre partenaire à l'ancre",
                   "Mouillage privé au large de Carnon",
                   "Cabine préparée, literie et linge de bain fournis",

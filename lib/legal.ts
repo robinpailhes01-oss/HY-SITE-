@@ -11,11 +11,11 @@
  */
 export const LEGAL = {
   /** Raison sociale, ex. « Harmonie Yacht SARL ». */
-  companyName: "À COMPLÉTER — raison sociale",
+  companyName: "Harmonie Group",
   /** Forme juridique, ex. « SARL au capital de 5 000 € ». */
   legalForm: "À COMPLÉTER — forme juridique et capital",
   /** Adresse du siège social. */
-  address: "À COMPLÉTER — adresse du siège social",
+  address: "61 rue du Rouet, 13008 Marseille",
   /** SIRET à 14 chiffres. */
   siret: "À COMPLÉTER — SIRET",
   /** N° de TVA intracommunautaire, ou « Non assujetti à la TVA ». */

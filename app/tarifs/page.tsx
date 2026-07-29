@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Anchor, Check, Fuel, LifeBuoy, Music, ShieldAlert } from "lucide-react";
+import Link from "next/link";
+import { Anchor, ArrowRight, Check, Fuel, LifeBuoy, Music, ShieldAlert } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
@@ -123,65 +124,48 @@ export default function TarifsPage() {
             title="Trois façons de passer la journée en mer."
           />
 
-          <StaggerGroup className="mt-14 grid gap-6 md:mt-16 md:grid-cols-3">
-            {JOURNEES.map((f) => (
-              <StaggerItem key={f.id}>
-                <div
-                  className={`flex h-full flex-col justify-between border p-8 transition-transform duration-500 hover:-translate-y-1 ${
-                    f.featured
-                      ? "border-brass bg-marine text-sable"
-                      : "border-marine/10 bg-sable-50 text-marine"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-baseline justify-between gap-4">
-                      <p
-                        className={`text-xs font-semibold uppercase tracking-[0.2em] ${
-                          f.featured ? "text-brass" : "text-marine/65"
-                        }`}
-                      >
-                        {f.duration}
+          <div className="mt-14 overflow-hidden border border-marine/10 md:mt-16">
+            <div className="hidden bg-marine px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-sable/70 sm:grid sm:grid-cols-[2fr_1fr_1fr_1fr_auto] sm:gap-4 sm:px-8">
+              <span>Formule</span>
+              <span className="text-right">Durée</span>
+              <span className="text-right">Tarif</span>
+              <span className="text-right">Personnes</span>
+              <span />
+            </div>
+            <StaggerGroup>
+              {JOURNEES.map((f) => (
+                <StaggerItem key={f.id}>
+                  <Link
+                    href={`/reserver?experience=jour&formule=${f.id}`}
+                    className={`group grid grid-cols-2 items-center gap-x-4 gap-y-3 border-t border-marine/10 px-6 py-6 transition-colors sm:grid-cols-[2fr_1fr_1fr_1fr_auto] sm:px-8 ${
+                      f.featured ? "bg-marine text-sable hover:bg-marine-400" : "bg-sable-50 text-marine hover:bg-sable-200"
+                    }`}
+                  >
+                    <div className="col-span-2 sm:col-span-1">
+                      <div className="flex items-center gap-3">
+                        <p className="font-serif text-xl">{f.name}</p>
+                        {f.featured && (
+                          <span className="font-script text-lg leading-none text-brass">le plus choisi</span>
+                        )}
+                      </div>
+                      <p className={`mt-1 text-sm leading-relaxed ${f.featured ? "text-sable/75" : "text-marine/65"}`}>
+                        {f.detail}
                       </p>
-                      {f.featured && (
-                        <span className="font-script text-xl leading-none text-brass">
-                          le plus choisi
-                        </span>
-                      )}
                     </div>
-                    <h3 className="mt-3 font-serif text-2xl">{f.name}</h3>
-                    <p
-                      className={`mt-4 font-serif text-4xl ${
-                        f.featured ? "text-brass" : "text-brass-400"
-                      }`}
-                    >
+                    <p className="text-left text-sm sm:text-right sm:text-base">{f.duration}</p>
+                    <p className={`text-left font-serif text-2xl sm:text-right ${f.featured ? "text-brass" : "text-brass-400"}`}>
                       {f.price}
                     </p>
-                    <p
-                      className={`mt-1 text-xs uppercase tracking-[0.18em] ${
-                        f.featured ? "text-sable/60" : "text-marine/55"
-                      }`}
-                    >
-                      {f.guests}
-                    </p>
-                    <p
-                      className={`mt-5 text-sm leading-relaxed ${
-                        f.featured ? "text-sable/80" : "text-marine/70"
-                      }`}
-                    >
-                      {f.detail}
-                    </p>
-                  </div>
-                  <Button
-                    href={`/reserver?experience=jour&formule=${f.id}`}
-                    variant={f.featured ? "primary" : "outline"}
-                    className={`mt-8 ${!f.featured ? "border-marine/30 hover:bg-marine/5" : ""}`}
-                  >
-                    Choisir cette formule
-                  </Button>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
+                    <p className="text-left text-sm sm:text-right sm:text-base">{f.guests}</p>
+                    <div className="col-span-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.15em] sm:col-span-1 sm:justify-end">
+                      Choisir
+                      <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                    </div>
+                  </Link>
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
+          </div>
 
           {/* Dit une fois, en clair : ce qu'on ne vous refacturera pas. */}
           <StaggerGroup className="mt-16 grid gap-8 border-t border-brass/30 pt-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -283,20 +267,29 @@ export default function TarifsPage() {
                 petit-déjeuner arrive avec le soleil.
               </p>
 
-              <div className="mt-10 flex items-baseline gap-5">
-                <span className="font-serif text-5xl text-brass md:text-6xl">350 €</span>
-                <span className="text-xs uppercase tracking-[0.2em] text-sable/60">
-                  la nuit · pour deux · tout compris
-                </span>
+              <div className="mt-10 overflow-hidden border border-sable/15">
+                <div className="grid grid-cols-3 gap-4 bg-sable/[0.06] px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-sable/60">
+                  <span>Durée</span>
+                  <span className="text-right">Tarif</span>
+                  <span className="text-right">Personnes</span>
+                </div>
+                <div className="grid grid-cols-3 items-center gap-4 border-t border-sable/15 px-6 py-5">
+                  <p className="text-sm sm:text-base">18h → 10h</p>
+                  <p className="text-right font-serif text-3xl text-brass">350 €</p>
+                  <p className="text-right text-sm sm:text-base">2 pers.</p>
+                </div>
               </div>
+              <p className="mt-3 text-xs uppercase tracking-[0.2em] text-sable/50">
+                Tout compris — le détail ci-dessous
+              </p>
 
               <ul className="mt-8 space-y-3 text-sm leading-relaxed text-sable/80">
                 {[
                   "Sortie en mer d'une heure et coucher de soleil compris",
-                  "Tapas de notre partenaire à l'ancre",
+                  "Tapas de notre partenaire Una Mas à l'ancre",
                   "Mouillage privé au large de Carnon",
                   "Cabine préparée, literie et linge de bain fournis",
-                  "Plateau de petit-déjeuner servi à bord",
+                  "Plateau de petit-déjeuner de l'Hôtel Neptune servi à bord",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <Check size={16} className="mt-0.5 shrink-0 text-brass" />
